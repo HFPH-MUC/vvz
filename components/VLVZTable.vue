@@ -70,26 +70,46 @@
         <template #detail="props">
           <article class="media">
             <div class="media-content">
-              <div class="content">
-                <ul>
-                  <li><b>Dozent*in: </b>{{ props.row.Dozentin_lang }}</li>
-                  <li><b>Fach: </b>{{ props.row.Fach }}</li>
-                  <li>
-                    <b>Studiengang: </b>
+              <b-tabs type="is-boxed" position="is-centered" class="block">
+                <b-tab-item label="Daten" style="background-color: $white;">
+                  <div class="content">
                     <ul>
-                      <li v-for="( item ) in splitStringToList( props.row.StudiengangModul )" :key="item">
-                        {{ item }}
+                      <li><b>Dozent*in: </b>{{ props.row.Dozentin_lang }}</li>
+                      <li><b>Fach: </b>{{ props.row.Fach }}</li>
+                      <li>
+                        <b>Studiengang: </b>
+                        <ul>
+                          <li v-for="( item ) in splitStringToList( props.row.StudiengangModul )" :key="item">
+                            {{ item }}
+                          </li>
+                        </ul>
                       </li>
+                      <li><b>SWS: </b>{{ props.row.nfd_sws }}</li>
+                      <li><b>Raum: </b>{{ props.row.Raum }}</li>
+                      <li><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
+                      <li><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
+                      <li><b>Beginn: </b>{{ props.row.Datum_Start }}</li>
+                      <li><b>Termine: </b>{{ props.row.Termine }}</li>
                     </ul>
-                  </li>
-                  <li><b>SWS: </b>{{ props.row.nfd_sws }}</li>
-                  <li><b>Raum: </b>{{ props.row.Raum }}</li>
-                  <li><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
-                  <li><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
-                  <li><b>Beginn: </b>{{ props.row.Datum_Start }}</li>
-                  <li><b>Termine: </b>{{ props.row.Termine }}</li>
-                </ul>
-              </div>
+                  </div>
+                </b-tab-item>
+                <b-tab-item label="Ziele und Wissen">
+                  <h3>Kommentar</h3>
+                  {{ props.row.ed_comment }}
+                  <h3 class="is-size-5 mt-2 mb-1">
+                    Ziele
+                  </h3>
+                  <!-- eslint-disable vue/no-v-html -->
+                  <div v-html="props.row.nfd_ziele" />
+                  <!--eslint-enable-->
+                  <h3 class="is-size-5 mt-2 mb-1">
+                    Wissen
+                  </h3>
+                  <!-- eslint-disable vue/no-v-html -->
+                  <div v-html="props.row.nfd_wissen" />
+                  <!--eslint-enable-->
+                </b-tab-item>
+              </b-tabs>
             </div>
           </article>
         </template>
@@ -132,7 +152,6 @@ export default {
     splitStringToList (str) {
       let arr = str.split(', ')
       arr = arr.sort()
-      console.log(arr)
       return arr
     },
 
