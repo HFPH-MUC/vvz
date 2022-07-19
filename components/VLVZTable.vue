@@ -99,7 +99,7 @@
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
       <div class="flex justify-center pt-4 pb-4 space-x-2 text-xl">
         <a href="https://www.facebook.com/hfph.muenchen/" target="_blank" class="mr-2">
-          <font-awesome-icon :icon="['fab', 'facebook']" :opacity=".7" />
+          <b-icon pack="fab" icon="facebook" :opacity=".7" />
         </a>
         <a href="https://twitter.com/hfph_muc" target="_blank" class="mr-2">
           <font-awesome-icon :icon="['fab', 'twitter']" :opacity=".7" />
