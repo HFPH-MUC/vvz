@@ -82,7 +82,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><b>Teaching_Units: </b>{{ props.row.Teaching_Units }}</li>
+                  <li><b>SWS: </b>{{ props.row.nfd_sws }}</li>
                   <li><b>Raum: </b>{{ props.row.Raum }}</li>
                   <li><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
                   <li><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
