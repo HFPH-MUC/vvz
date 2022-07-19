@@ -123,7 +123,6 @@ export default {
   },
   methods: {
     splitStringToList (str) {
-      console.log(str.split(','))
       return str.split(',')
     },
 

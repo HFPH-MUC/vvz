@@ -9,7 +9,7 @@ export const actions = {
     // make request
     const req = await this.$axios.$get('/a5-vlvz-api')
       .then((data) => {
-        console.log(data)
+        // console.log(data)
       })
     state.courses = req.data
     return req.data
