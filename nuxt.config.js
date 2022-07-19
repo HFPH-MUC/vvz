@@ -38,13 +38,23 @@ export default {
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    // baseURL: '/'
+    proxy: true
+  },
+
+  proxy: {
+    // Simple proxy with options
+    '/a5-vlvz-api': {
+    target: 'https://hfph.academyfive.net/connect/data.php?view=142&token=8526-11BD-4B02-365E-8DD7-D025-5A4C-C0EC&key=15FE-9E19-377E-1CAA-2E67-D9B8-4EAE-B866&format=json&format=json&x=y',
+      changeOrigin: true
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
