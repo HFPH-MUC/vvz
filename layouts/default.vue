@@ -5,16 +5,9 @@
       role="navigation"
       aria-label="main navigation"
     >
-      <div class="navbar-brand">
-        <a
-          class="navbar-item"
-          href="/"
-        >
-          <img
-            src="~assets/buefy.png"
-            alt="Buefy"
-            height="28"
-          >
+      <div class="navbar-brand has-text-weight-bold is-size-4">
+        <a class="navbar-item" href="https://www.hfph.de" target="_blank">
+          HFPH
         </a>
 
         <div class="navbar-burger">
@@ -26,7 +19,7 @@
     </nav>
 
     <section class="main-content columns">
-      <aside class="column is-2 section">
+      <!--<aside class="column is-2 section">
         <p class="menu-label is-hidden-touch">
           General
         </p>
@@ -43,7 +36,7 @@
             </NuxtLink>
           </li>
         </ul>
-      </aside>
+      </aside>-->
 
       <div class="container column is-10">
         <Nuxt />
