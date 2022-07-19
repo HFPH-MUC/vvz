@@ -75,7 +75,7 @@
                   <li><b>Dozent*in: </b>{{ props.row.Dozentin_lang }}</li>
                   <li><b>Fach: </b>{{ props.row.Fach }}</li>
                   <li>
-                    <b>Modul: </b>
+                    <b>Studiengang: </b>
                     <ul>
                       <li v-for="( item ) in splitStringToList( props.row.StudiengangModul )" :key="item">
                         {{ item }}
