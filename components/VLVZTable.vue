@@ -1,6 +1,13 @@
 <template>
   <div>
-    <b-button type="is-primary" @click="fetchSomething()">
+    <h1 class="title">
+      Vorlesungsverzeichnis
+    </h1>
+    <p class="subtitle">
+      Wintersemester 2022/23
+    </p>
+
+    <b-button class="mb-3" type="is-primary" @click="fetchSomething()">
       Neu laden
     </b-button>
 
