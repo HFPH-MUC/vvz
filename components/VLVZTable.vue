@@ -130,7 +130,10 @@ export default {
   },
   methods: {
     splitStringToList (str) {
-      return str.split(',')
+      let arr = str.split(', ')
+      arr = arr.sort()
+      console.log(arr)
+      return arr
     },
 
     async fetchSomething () {
