@@ -1,0 +1,51 @@
+@import "~bulma/sass/utilities/functions";
+@import "~bulma/sass/utilities/initial-variables";
+@import "~buefy/src/scss/utils/_all";
+
+// If you override or set variables here, they will be available available to you from within your Vue components, without requiring @import statements.
+
+$hfph-blau: #182f7a;
+$hfph-blau-light: findLightColor($hfph-blau);
+$hfph-blau-dark: findDarkColor($hfph-blau);
+$hfph-blau-invert: findColorInvert($hfph-blau);
+
+$hfph-gelb: #ffcc19;
+$hfph-gelb-light: findLightColor($hfph-gelb);
+$hfph-gelb-dark: findDarkColor($hfph-gelb);
+$hfph-gelb-invert: findColorInvert($hfph-gelb);
+
+$custom-colors: null !default;
+$custom-shades: null !default;
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: mergeColorMaps(
+	(
+	    "white": (
+	        $white,
+	        $black,
+	    ),
+	    "black": (
+	        $black,
+	        $white,
+	    ),
+	    "hfph-blau": (
+	        $hfph-blau,
+			$hfph-blau-invert,
+	        $hfph-blau-light,
+			$hfph-blau-dark,
+	    ),
+	    "hfph-gelb": (
+	        $hfph-gelb,
+			$hfph-gelb-invert,
+	        $hfph-gelb-light,
+			$hfph-gelb-dark,
+	    ),
+	    "primary": (
+            $primary,
+            $primary-invert,
+            $primary-light,
+            $primary-dark,
+        ),
+	),
+	$custom-colors
+);
