@@ -1,120 +1,122 @@
 <template>
   <div>
-    <h1 class="title">
-      Vorlesungsverzeichnis
-    </h1>
-    <p class="subtitle">
-      Wintersemester 2022/23
-    </p>
+    <div class="hero mb-5">
+      <h1 class="title is-hfph-blau">
+        Vorlesungsverzeichnis
+      </h1>
+      <p class="subtitle is-hfph-blau">
+        Wintersemester 2022/23
+      </p>
+    </div>
 
-    <b-button class="mb-3" type="is-primary" @click="fetchSomething()">
+    <b-button class="mb-3" type="is-hfph-gelb" @click="fetchSomething()">
       Neu laden
     </b-button>
 
     <b-loading v-model="isLoading" :is-full-page="isFullPage" :can-cancel="true" />
 
-    <div>
-      <b-table
-        :data="courses"
-        striped
-        default-sort="Titel"
-        detailed
-        detail-key="Angebotsnummer"
-        :show-detail-icon="false"
+    <b-table
+      :data="courses"
+      striped
+      default-sort="Titel"
+      detailed
+      detail-key="Angebotsnummer"
+      :show-detail-icon="false"
+      style="width: 100%;"
+    >
+      <b-table-column
+        v-slot="props"
+        field="Angebotsnummer"
+        label="Nr."
+        width="140"
+        sortable
+        searchable
       >
-        <b-table-column
-          v-slot="props"
-          field="Angebotsnummer"
-          label="Nr."
-          width="140"
-          sortable
-          searchable
-        >
-          {{ props.row.Angebotsnummer }}
-        </b-table-column>
+        {{ props.row.Angebotsnummer }}
+      </b-table-column>
 
-        <b-table-column
-          v-slot="props"
-          field="Titel"
-          label="Titel"
-          sortable
-          searchable
-        >
-          <a @click="props.toggleDetails(props.row)">
-            {{ props.row.Titel }}
-          </a>
-        </b-table-column>
+      <b-table-column
+        v-slot="props"
+        field="Titel"
+        label="Titel"
+        width="760"
+        sortable
+        searchable
+      >
+        <a @click="props.toggleDetails(props.row)">
+          {{ props.row.Titel }}
+        </a>
+      </b-table-column>
 
-        <b-table-column
-          v-slot="props"
-          field="Dozentin_kurz"
-          label="Dozent*in"
-          width="240"
-          sortable
-          searchable
-        >
-          {{ props.row.Dozentin_kurz }}
-        </b-table-column>
+      <b-table-column
+        v-slot="props"
+        field="Dozentin_kurz"
+        label="Dozent*in"
+        width="240"
+        sortable
+        searchable
+      >
+        {{ props.row.Dozentin_kurz }}
+      </b-table-column>
 
-        <b-table-column
-          v-slot="props"
-          field="Veranstaltungstyp"
-          label="Veranstaltungstyp"
-          width="160"
-          sortable
-          searchable
-        >
-          {{ props.row.Veranstaltungstyp }}
-        </b-table-column>
+      <b-table-column
+        v-slot="props"
+        field="Veranstaltungstyp"
+        label="Veranstaltungstyp"
+        width="160"
+        sortable
+        searchable
+      >
+        {{ props.row.Veranstaltungstyp }}
+      </b-table-column>
 
-        <template #detail="props">
-          <article class="media">
-            <div class="media-content">
-              <b-tabs type="is-boxed" position="is-centered" class="block">
-                <b-tab-item label="Daten" style="background-color: $white;">
-                  <div class="content">
-                    <ul>
-                      <li><b>Dozent*in: </b>{{ props.row.Dozentin_lang }}</li>
-                      <li><b>Fach: </b>{{ props.row.Fach }}</li>
-                      <li>
-                        <b>Studiengang: </b>
-                        <ul>
-                          <li v-for="( item ) in splitStringToList( props.row.StudiengangModul )" :key="item">
-                            {{ item }}
-                          </li>
-                        </ul>
-                      </li>
-                      <li><b>SWS: </b>{{ props.row.nfd_sws }}</li>
-                      <li><b>Raum: </b>{{ props.row.Raum }}</li>
-                      <li><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
-                      <li><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
-                      <li><b>Beginn: </b>{{ props.row.Datum_Start }}</li>
-                      <li><b>Termine: </b>{{ props.row.Termine }}</li>
-                    </ul>
-                  </div>
-                </b-tab-item>
-                <b-tab-item label="Ziele und Wissen">
-                  <h3>Kommentar</h3>
-                  {{ props.row.ed_comment }}
-                  <h3 class="is-size-5 mt-2 mb-1">
-                    Ziele
-                  </h3>
-                  <!-- eslint-disable vue/no-v-html -->
-                  <div v-html="props.row.nfd_ziele" />
-                  <!--eslint-enable-->
-                  <h3 class="is-size-5 mt-2 mb-1">
-                    Wissen
-                  </h3>
-                  <!-- eslint-disable vue/no-v-html -->
-                  <div v-html="props.row.nfd_wissen" />
-                  <!--eslint-enable-->
-                </b-tab-item>
-              </b-tabs>
-            </div>
-          </article>
-        </template>
-      </b-table>
-    </div>
+      <template #detail="props">
+        <article class="media">
+          <div class="media-content">
+            <b-tabs type="is-boxed" position="is-centered" class="block" :animation="false">
+              <b-tab-item label="Daten" style="background-color: $white;">
+                <div class="content">
+                  <ul>
+                    <li><b>Dozent*in: </b>{{ props.row.Dozentin_lang }}</li>
+                    <li><b>Fach: </b>{{ props.row.Fach }}</li>
+                    <li>
+                      <b>Studiengang: </b>
+                      <ul>
+                        <li v-for="( item ) in splitStringToList( props.row.StudiengangModul )" :key="item">
+                          {{ item }}
+                        </li>
+                      </ul>
+                    </li>
+                    <li><b>SWS: </b>{{ props.row.nfd_sws }}</li>
+                    <li><b>Raum: </b>{{ props.row.Raum }}</li>
+                    <li><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
+                    <li><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
+                    <li><b>Beginn: </b>{{ props.row.Datum_Start }}</li>
+                    <li><b>Termine: </b>{{ props.row.Termine }}</li>
+                  </ul>
+                </div>
+              </b-tab-item>
+              <b-tab-item label="Ziele und Wissen">
+                <h3>Kommentar</h3>
+                {{ props.row.ed_comment }}
+                <h3 class="is-size-5 mt-2 mb-1">
+                  Ziele
+                </h3>
+                <!-- eslint-disable vue/no-v-html -->
+                <div v-html="props.row.nfd_ziele" />
+                <!--eslint-enable-->
+                <h3 class="is-size-5 mt-2 mb-1">
+                  Wissen
+                </h3>
+                <!-- eslint-disable vue/no-v-html -->
+                <div v-html="props.row.nfd_wissen" />
+                <!--eslint-enable-->
+              </b-tab-item>
+            </b-tabs>
+          </div>
+        </article>
+      </template>
+    </b-table>
 
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
       <div class="flex justify-center pt-4 pb-4 space-x-2 text-xl">
@@ -168,3 +170,22 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .b-tabs .tab-content {
+    background-color: white;
+  }
+
+  .tabs li.is-active a,
+  a {
+    color: $hfph-blau;
+  }
+</style>
+
+<style lang="scss" scoped>
+  .hero {
+    * {
+      color: $hfph-blau;
+    }
+  }
+</style>

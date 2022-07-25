@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav
-      class="navbar header has-shadow is-primary"
+      class="navbar header has-shadow is-hfph-gelb"
       role="navigation"
       aria-label="main navigation"
     >
