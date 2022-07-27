@@ -18,7 +18,7 @@
     <b-table
       :data="courses"
       striped
-      default-sort="Titel"
+      default-sort="Angebotsnummer"
       detailed
       detail-key="Angebotsnummer"
       :show-detail-icon="false"
