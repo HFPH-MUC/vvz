@@ -78,7 +78,7 @@
                 <div class="content">
                   <ul>
                     <li><b>Dozent*in: </b>{{ props.row.Dozentin_lang }}</li>
-                    <li><b>Fach: </b>{{ props.row.Fach }}</li>
+                    <li><b>Kurs: </b>{{ props.row.Fach }}</li>
                     <li>
                       <b>Studiengang: </b>
                       <ul>
