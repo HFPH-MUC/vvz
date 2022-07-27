@@ -91,7 +91,6 @@
                     <li><b>Raum: </b>{{ props.row.Raum }}</li>
                     <li><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
                     <li><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
-                    <li><b>Beginn: </b>{{ props.row.Datum_Start }}</li>
                     <li><b>Termine: </b>{{ props.row.Termine }}</li>
                   </ul>
                 </div>
