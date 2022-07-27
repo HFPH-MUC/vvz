@@ -4,9 +4,23 @@
       <h1 class="title is-hfph-blau">
         Vorlesungsverzeichnis
       </h1>
-      <p class="subtitle is-hfph-blau">
-        Wintersemester 2022/23
-      </p>
+
+      <b-field>
+        <b-select
+          v-model="selectSemester"
+          placeholder="Semester"
+          size="is-medium"
+          class="is-hfph-blau"
+          @input="fetchSomething()"
+        >
+          <option value="2022:1">
+            Winter 2022/2023
+          </option>
+          <option value="2022:2">
+            Sommer 2022
+          </option>
+        </b-select>
+      </b-field>
     </div>
 
     <b-button class="mb-3" type="is-hfph-gelb" @click="fetchSomething()">
@@ -159,7 +173,8 @@ export default {
       loading: true,
       isLoading: false,
       isFullPage: true,
-      courses: []
+      courses: [],
+      selectSemester: '2022:1'
     }
   },
   mounted () {
@@ -174,7 +189,7 @@ export default {
 
     async fetchSomething () {
       this.isLoading = true
-      await this.$axios.$get('/a5-vlvz-api')
+      await this.$axios.$get('/a5-vlvz-api' + '&Semester=' + this.selectSemester)
         .then((response) => {
           this.courses = response
         })
