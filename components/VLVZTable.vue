@@ -95,8 +95,6 @@
                   </ul>
                 </div>
               </b-tab-item>
-                <h3>Kommentar</h3>
-                {{ props.row.ed_comment }}
               <b-tab-item label="Erläuterungen">
                 <h3 class="is-size-5 mt-2 mb-1">
                   Ziele
