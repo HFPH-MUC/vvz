@@ -91,7 +91,14 @@
                     <li><b>Raum: </b>{{ props.row.Raum }}</li>
                     <li><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
                     <li><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
-                    <li><b>Termine: </b>{{ props.row.Termine }}</li>
+                    <li>
+                      <b>Termine: </b>
+                      <ul>
+                        <li v-for="( item ) in splitStringToList( props.row.Termine )" :key="item">
+                          {{ item }}
+                        </li>
+                      </ul>
+                    </li>
                   </ul>
                 </div>
               </b-tab-item>
