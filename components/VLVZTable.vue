@@ -95,14 +95,25 @@
                   </ul>
                 </div>
               </b-tab-item>
-              <b-tab-item label="Erläuterungen">
-                <h3 class="is-size-5 mt-2 mb-1">
+              <b-tab-item
+                v-if="props.row.nfd_ziele.length
+                  && props.row.nfd_wissen.length"
+                label="Erläuterungen"
+              >
+                <h3
+                  v-if="props.row.nfd_ziele.length"
+                  class="is-size-5 mt-2 mb-1"
+                >
                   Ziele
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
                 <div v-html="props.row.nfd_ziele" />
                 <!--eslint-enable-->
-                <h3 class="is-size-5 mt-2 mb-1">
+
+                <h3
+                  v-if="props.row.nfd_wissen.length"
+                  class="is-size-5 mt-2 mb-1"
+                >
                   Wissen
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
