@@ -91,8 +91,8 @@
               <b-tab-item label="Daten" style="background-color: $white;">
                 <div class="content">
                   <ul>
-                    <li><b>Dozent*in: </b>{{ props.row.Dozentin_lang }}</li>
-                    <li><b>Kurs: </b>{{ props.row.Fach }}</li>
+                    <li v-if="props.row.Dozentin_lang"><b>Dozent*in: </b>{{ props.row.Dozentin_lang }}</li>
+                    <li v-if="props.row.Fach"><b>Kurs: </b>{{ props.row.Fach }}</li>
                     <li>
                       <b>Studiengang: </b>
                       <ul>
@@ -101,11 +101,11 @@
                         </li>
                       </ul>
                     </li>
-                    <li><b>SWS: </b>{{ props.row.nfd_sws }}</li>
-                    <li><b>Raum: </b>{{ props.row.Raum }}</li>
-                    <li><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
-                    <li><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
-                    <li>
+                    <li v-if="props.row.nfd_sws"><b>SWS: </b>{{ props.row.nfd_sws }}</li>
+                    <li v-if="props.row.Raum"><b>Raum: </b>{{ props.row.Raum }}</li>
+                    <li v-if="props.row.Uhrzeit_von"><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
+                    <li v-if="props.row.Uhrzeit_bis"><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
+                    <li v-if="props.row.Termine">
                       <b>Termine: </b>
                       <ul>
                         <li v-for="( item ) in splitStringToList( props.row.Termine )" :key="item">
@@ -182,6 +182,10 @@ export default {
   },
   methods: {
     splitStringToList (str) {
+      if (!str || str.trim().length === 0) {
+        return
+      }
+
       let arr = str.split(', ')
       arr = arr.sort()
       return arr
