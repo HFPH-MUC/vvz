@@ -62,6 +62,7 @@ export default {
   proxy: {
     // Simple proxy with options
     '/a5-vlvz-api': {
+    // `&x=y` am Ende, sonst kein JSON sondern HTML
     target: 'https://hfph.academyfive.net/connect/data.php?view=142&token=8526-11BD-4B02-365E-8DD7-D025-5A4C-C0EC&key=15FE-9E19-377E-1CAA-2E67-D9B8-4EAE-B866&format=json&format=json&x=y',
       changeOrigin: true
     },
