@@ -64,13 +64,13 @@
 
       <b-table-column
         v-slot="props"
-        field="Dozentin_kurz"
+        field="kb_clsl_p_kurz"
         label="Dozent*in"
         width="240"
         sortable
         searchable
       >
-        {{ props.row.Dozentin_kurz }}
+        {{ props.row.kb_clsl_p_kurz }}
       </b-table-column>
 
       <b-table-column
@@ -91,8 +91,8 @@
               <b-tab-item label="Daten" style="background-color: $white;">
                 <div class="content">
                   <ul>
-                    <li v-if="props.row.Dozentin_lang">
-                      <b>Dozent*in: </b>{{ props.row.Dozentin_lang }}
+                    <li v-if="props.row.kb_clsl_p_lang">
+                      <b>Dozent*in: </b>{{ props.row.kb_clsl_p_lang }}
                     </li>
                     <li v-if="props.row.Fach">
                       <b>Kurs: </b>{{ props.row.Fach }}
