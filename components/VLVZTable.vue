@@ -106,6 +106,13 @@
                     <li v-if="props.row.Uhrzeit_von"><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
                     <li v-if="props.row.Uhrzeit_bis"><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
                     <li v-if="props.row.Termine">
+                    <!--<li v-if="props.row.Uhrzeit_von">
+                      <b>Von: </b>{{ props.row.Uhrzeit_von }}
+                    </li>
+                    <li v-if="props.row.Uhrzeit_bis">
+                      <b>Bis: </b>{{ props.row.Uhrzeit_bis }}
+                    </li>
+                    -->
                       <b>Termine: </b>
                       <ul>
                         <li v-for="( item ) in splitStringToList( props.row.Termine )" :key="item">
