@@ -96,7 +96,7 @@
                     <li>
                       <b>Studiengang: </b>
                       <ul>
-                        <li v-for="( item ) in splitStringToList( props.row.StudiengangModul )" :key="item">
+                        <li v-for="( item ) in splitStringToList( props.row.StudiengangModul, true )" :key="item">
                           {{ item }}
                         </li>
                       </ul>
@@ -181,13 +181,17 @@ export default {
     this.fetchSomething()
   },
   methods: {
-    splitStringToList (str) {
+    splitStringToList (str, sort = false) {
       if (!str || str.trim().length === 0) {
         return
       }
 
       let arr = str.split(', ')
-      arr = arr.sort()
+
+      if (sort === true) {
+        arr = arr.sort()
+      }
+
       return arr
     },
 
