@@ -144,7 +144,7 @@
                   v-if="props.row.nfd_ziele.length"
                   class="is-size-5 mt-2 mb-1"
                 >
-                  Ziele
+                  Lernziele
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
                 <div v-html="props.row.nfd_ziele" />
@@ -154,7 +154,7 @@
                   v-if="props.row.nfd_wissen.length"
                   class="is-size-5 mt-2 mb-1"
                 >
-                  Wissen
+                  Vorausgesetztes Wissen
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
                 <div v-html="props.row.nfd_wissen" />
@@ -164,7 +164,7 @@
                   v-if="props.row.nfd_beschreibung.length"
                   class="is-size-5 mt-2 mb-1"
                 >
-                  Beschreibung
+                  Fachbeschreibung
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
                 <div v-html="props.row.nfd_beschreibung" />
