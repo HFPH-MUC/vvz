@@ -91,8 +91,12 @@
               <b-tab-item label="Daten" style="background-color: $white;">
                 <div class="content">
                   <ul>
-                    <li v-if="props.row.Dozentin_lang"><b>Dozent*in: </b>{{ props.row.Dozentin_lang }}</li>
-                    <li v-if="props.row.Fach"><b>Kurs: </b>{{ props.row.Fach }}</li>
+                    <li v-if="props.row.Dozentin_lang">
+                      <b>Dozent*in: </b>{{ props.row.Dozentin_lang }}
+                    </li>
+                    <li v-if="props.row.Fach">
+                      <b>Kurs: </b>{{ props.row.Fach }}
+                    </li>
                     <li>
                       <b>Studiengang: </b>
                       <ul>
@@ -101,11 +105,12 @@
                         </li>
                       </ul>
                     </li>
-                    <li v-if="props.row.nfd_sws"><b>SWS: </b>{{ props.row.nfd_sws }}</li>
-                    <li v-if="props.row.Raum"><b>Raum: </b>{{ props.row.Raum }}</li>
-                    <li v-if="props.row.Uhrzeit_von"><b>Von: </b>{{ props.row.Uhrzeit_von }}</li>
-                    <li v-if="props.row.Uhrzeit_bis"><b>Bis: </b>{{ props.row.Uhrzeit_bis }}</li>
-                    <li v-if="props.row.Termine">
+                    <li v-if="props.row.nfd_sws">
+                      <b>SWS: </b>{{ props.row.nfd_sws }}
+                    </li>
+                    <li v-if="props.row.Raum">
+                      <b>Raum: </b>{{ props.row.Raum }}
+                    </li>
                     <!--<li v-if="props.row.Uhrzeit_von">
                       <b>Von: </b>{{ props.row.Uhrzeit_von }}
                     </li>
@@ -113,10 +118,11 @@
                       <b>Bis: </b>{{ props.row.Uhrzeit_bis }}
                     </li>
                     -->
+                    <li v-if="props.row.Termine_mit_Uhrzeit">
                       <b>Termine: </b>
                       <ul>
-                        <li v-for="( item ) in splitStringToList( props.row.Termine )" :key="item">
-                          {{ item }}
+                        <li v-for="( item ) in splitStringToList( props.row.Termine_mit_Uhrzeit )" :key="item">
+                          <span style="font-size: .93rem; font-family: 'Lucida Console', monospace">{{ item }}</span>
                         </li>
                       </ul>
                     </li>
@@ -124,8 +130,14 @@
                 </div>
               </b-tab-item>
               <b-tab-item
-                v-if="props.row.nfd_ziele.length
-                  && props.row.nfd_wissen.length"
+                v-if="
+                  props.row.nfd_ziele.length
+                    || props.row.nfd_wissen.length
+                    || props.row.nfd_beschreibung.length
+                    || props.row.nfd_elearning.length
+                    || props.row.nfd_vorbereitung.length
+                    || props.row.nfd_kommentar.length
+                "
                 label="Erläuterungen"
               >
                 <h3
@@ -146,6 +158,46 @@
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
                 <div v-html="props.row.nfd_wissen" />
+                <!--eslint-enable-->
+
+                <h3
+                  v-if="props.row.nfd_beschreibung.length"
+                  class="is-size-5 mt-2 mb-1"
+                >
+                  Beschreibung
+                </h3>
+                <!-- eslint-disable vue/no-v-html -->
+                <div v-html="props.row.nfd_beschreibung" />
+                <!--eslint-enable-->
+
+                <h3
+                  v-if="props.row.nfd_elearning.length"
+                  class="is-size-5 mt-2 mb-1"
+                >
+                  E-Learning
+                </h3>
+                <!-- eslint-disable vue/no-v-html -->
+                <div v-html="props.row.nfd_elearning" />
+                <!--eslint-enable-->
+
+                <h3
+                  v-if="props.row.nfd_vorbereitung.length"
+                  class="is-size-5 mt-2 mb-1"
+                >
+                  Vorbereitung
+                </h3>
+                <!-- eslint-disable vue/no-v-html -->
+                <div v-html="props.row.nfd_vorbereitung" />
+                <!--eslint-enable-->
+
+                <h3
+                  v-if="props.row.nfd_kommentar.length"
+                  class="is-size-5 mt-2 mb-1"
+                >
+                  Kommentar
+                </h3>
+                <!-- eslint-disable vue/no-v-html -->
+                <div v-html="props.row.nfd_kommentar" />
                 <!--eslint-enable-->
               </b-tab-item>
             </b-tabs>
