@@ -9,12 +9,6 @@
         <a class="navbar-item" href="https://www.hfph.de" target="_blank">
           HFPH
         </a>
-
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
-        </div>
       </div>
     </nav>
 
