@@ -193,6 +193,7 @@
                 <h3
                   v-if="
                     !!props.row.nfd_kommentar
+                      || !!props.row.ed_comment
                   "
                   class="is-size-5 mt-2 mb-1"
                 >
@@ -200,6 +201,7 @@
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
                 <div v-if="!!props.row.nfd_kommentar" v-html="props.row.nfd_kommentar" />
+                <div v-if="!!props.row.ed_comment" v-html="props.row.ed_comment" />
                 <!--eslint-enable-->
               </b-tab-item>
             </b-tabs>
