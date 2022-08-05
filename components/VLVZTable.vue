@@ -118,7 +118,7 @@
                       <b>Bis: </b>{{ props.row.Uhrzeit_bis }}
                     </li>
                     -->
-                    <li v-if="props.row.Termine_mit_Uhrzeit">
+                    <li v-if="!!props.row.Termine_mit_Uhrzeit">
                       <b>Termine: </b>
                       <ul>
                         <li v-for="( item ) in splitStringToList( props.row.Termine_mit_Uhrzeit )" :key="item">
@@ -131,17 +131,17 @@
               </b-tab-item>
               <b-tab-item
                 v-if="
-                  props.row.nfd_ziele.length
-                    || props.row.nfd_wissen.length
-                    || props.row.nfd_beschreibung.length
-                    || props.row.nfd_elearning.length
-                    || props.row.nfd_vorbereitung.length
-                    || props.row.nfd_kommentar.length
+                  !!props.row.nfd_ziele
+                    || !!props.row.nfd_wissen
+                    || !!props.row.nfd_beschreibung
+                    || !!props.row.nfd_elearning
+                    || !!props.row.nfd_vorbereitung
+                    || !!props.row.nfd_kommentar
                 "
                 label="Erläuterungen"
               >
                 <h3
-                  v-if="props.row.nfd_ziele.length"
+                  v-if="!!props.row.nfd_ziele"
                   class="is-size-5 mt-2 mb-1"
                 >
                   Lernziele
@@ -151,7 +151,7 @@
                 <!--eslint-enable-->
 
                 <h3
-                  v-if="props.row.nfd_wissen.length"
+                  v-if="!!props.row.nfd_wissen"
                   class="is-size-5 mt-2 mb-1"
                 >
                   Vorausgesetztes Wissen
@@ -161,7 +161,7 @@
                 <!--eslint-enable-->
 
                 <h3
-                  v-if="props.row.nfd_beschreibung.length"
+                  v-if="!!props.row.nfd_beschreibung"
                   class="is-size-5 mt-2 mb-1"
                 >
                   Fachbeschreibung
@@ -171,7 +171,7 @@
                 <!--eslint-enable-->
 
                 <h3
-                  v-if="props.row.nfd_elearning.length"
+                  v-if="!!props.row.nfd_elearning"
                   class="is-size-5 mt-2 mb-1"
                 >
                   E-Learning
@@ -181,7 +181,7 @@
                 <!--eslint-enable-->
 
                 <h3
-                  v-if="props.row.nfd_vorbereitung.length"
+                  v-if="!!props.row.nfd_vorbereitung"
                   class="is-size-5 mt-2 mb-1"
                 >
                   Vorbereitung
@@ -191,13 +191,15 @@
                 <!--eslint-enable-->
 
                 <h3
-                  v-if="props.row.nfd_kommentar.length"
+                  v-if="
+                    !!props.row.nfd_kommentar
+                  "
                   class="is-size-5 mt-2 mb-1"
                 >
                   Kommentar
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
-                <div v-html="props.row.nfd_kommentar" />
+                <div v-if="!!props.row.nfd_kommentar" v-html="props.row.nfd_kommentar" />
                 <!--eslint-enable-->
               </b-tab-item>
             </b-tabs>
