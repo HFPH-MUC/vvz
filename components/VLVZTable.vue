@@ -94,9 +94,9 @@
                     <li v-if="props.row.kb_clsl_p_lang">
                       <b>Dozent*in: </b>{{ props.row.kb_clsl_p_lang }}
                     </li>
-                    <li v-if="props.row.Fach">
+                    <!--<li v-if="props.row.Fach">
                       <b>Kurs: </b>{{ props.row.Fach }}
-                    </li>
+                    </li>-->
                     <li>
                       <b>Studiengang: </b>
                       <ul>
