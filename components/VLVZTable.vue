@@ -87,7 +87,7 @@
       <template #detail="props">
         <article class="media">
           <div class="media-content">
-            <b-tabs type="is-boxed" position="is-centered" class="block" :animation="false">
+            <b-tabs type="is-boxed" position="is-centered" class="block">
               <b-tab-item label="Daten" style="background-color: $white;">
                 <div class="content">
                   <ul>
