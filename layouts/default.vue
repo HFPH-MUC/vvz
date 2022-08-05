@@ -46,19 +46,19 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
           <div class="flex justify-center pt-4 pb-4 space-x-2 is-size-4">
             <a href="https://www.hfph.de/" target="_blank" class="mr-4">
-              <font-awesome-icon icon="arrow-up-right-from-square" />
+              <font-awesome-icon icon="arrow-up-right-from-square" size="xs" />
             </a>
             <a href="https://www.facebook.com/hfph.muenchen/" target="_blank" class="mr-4">
-              <font-awesome-icon :icon="['fab', 'facebook']" />
+              <font-awesome-icon :icon="['fab', 'facebook']" size="xs" />
             </a>
             <a href="https://twitter.com/hfph_muc" target="_blank" class="mr-4">
-              <font-awesome-icon :icon="['fab', 'twitter']" />
+              <font-awesome-icon :icon="['fab', 'twitter']" size="xs" />
             </a>
             <a href="https://www.instagram.com/hfphmuc/" target="_blank" class="mr-4">
-              <font-awesome-icon :icon="['fab', 'instagram']" />
+              <font-awesome-icon :icon="['fab', 'instagram']" size="xs" />
             </a>
             <a href="https://www.linkedin.com/school/15094016" target="_blank" class="mr-4">
-              <font-awesome-icon :icon="['fab', 'linkedin']" />
+              <font-awesome-icon :icon="['fab', 'linkedin']" size="xs" />
             </a>
           </div>
         </div>
