@@ -147,7 +147,7 @@
                   Lernziele
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
-                <div v-html="props.row.nfd_ziele" />
+                <div v-html="stripStyles( props.row.nfd_ziele )" />
                 <!--eslint-enable-->
 
                 <h3
@@ -157,7 +157,7 @@
                   Vorausgesetztes Wissen
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
-                <div v-html="props.row.nfd_wissen" />
+                <div v-html="stripStyles( props.row.nfd_wissen )" />
                 <!--eslint-enable-->
 
                 <h3
@@ -167,7 +167,7 @@
                   Fachbeschreibung
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
-                <div v-html="props.row.nfd_beschreibung" />
+                <div v-html="stripStyles( props.row.nfd_beschreibung )" />
                 <!--eslint-enable-->
 
                 <h3
@@ -177,7 +177,7 @@
                   E-Learning
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
-                <div v-html="props.row.nfd_elearning" />
+                <div v-html="stripStyles( props.row.nfd_elearning )" />
                 <!--eslint-enable-->
 
                 <h3
@@ -187,7 +187,7 @@
                   Vorbereitung
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
-                <div v-html="props.row.nfd_vorbereitung" />
+                <div v-html="stripStyles( props.row.nfd_vorbereitung )" />
                 <!--eslint-enable-->
 
                 <h3
@@ -200,8 +200,8 @@
                   Kommentar
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
-                <div v-if="!!props.row.nfd_kommentar" v-html="props.row.nfd_kommentar" />
-                <div v-if="!!props.row.ed_comment" v-html="props.row.ed_comment" />
+                <div v-if="!!props.row.nfd_kommentar" v-html="stripStyles( props.row.nfd_kommentar )" />
+                <div v-if="!!props.row.ed_comment" v-html="stripStyles( props.row.ed_comment )" />
                 <!--eslint-enable-->
               </b-tab-item>
             </b-tabs>
@@ -244,6 +244,14 @@ export default {
     this.fetchSomething()
   },
   methods: {
+    stripStyles (string) {
+      string = string
+        .replace(/(<p>&nbsp;<\/p>)/gi, '')
+        .replace(/(<p><\/p>)/gi, '')
+        .replace(/(style=".*;")/gi, '')
+
+      return string
+    },
     splitStringToList (str, sort = false) {
       if (!str || str.trim().length === 0) {
         return
@@ -289,4 +297,13 @@ export default {
       color: $hfph-blau;
     }
   }
+
+/*
+  section.tab-content div.tab-item *,
+  section.tab-content :deep(span),
+  section.tab-content :deep(span[style]) {
+    font-family: $family-sans-serif !important;
+    font-size: 16px;
+  }
+  */
 </style>
