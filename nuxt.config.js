@@ -32,7 +32,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/fontawesome'
   ],
 
   styleResources: {
@@ -41,6 +42,16 @@ export default {
      less: [],
      stylus: [],
      hoistUseStatements: true  // Hoists the "@use" imports. Applies only to "sass", "scss" and "less". Default: false.
+  },
+
+  fontawesome: {
+    icons: {
+      solid: true,
+      regular: true,
+      light: false,
+      duotone: false,
+      brands: true
+    }
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
