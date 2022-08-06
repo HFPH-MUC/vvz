@@ -137,6 +137,7 @@
                     || !!props.row.nfd_elearning
                     || !!props.row.nfd_vorbereitung
                     || !!props.row.nfd_kommentar
+                    || (!!props.row.nfd_b && props.row.nfd_b != '{}')
                 "
                 label="Erläuterungen"
               >
@@ -191,6 +192,29 @@
                 <!--eslint-enable-->
 
                 <h3
+                  v-if="!!props.row.nfd_b && props.row.nfd_b != '{}'"
+                  class="is-size-5 mt-2 mb-1"
+                >
+                  Literatur
+                </h3>
+                <!-- eslint-disable vue/no-v-html -->
+                <ul v-if="!!props.row.nfd_b && props.row.nfd_b != '{}'" class="books">
+                  <li v-for="( book ) in makeList (props.row.nfd_b)" :key="book.name">
+                    {{ book.name }}
+                    <a v-if="!!book.href" :href="book.href" target="_blank">
+                      &emsp;<font-awesome-icon icon="book" size="xs" /> Link
+                    </a>
+                    <a v-if="!!book.isbn && ((!!book.href && !book.href.includes('hfph.bsz-bw.de')) || !book.href)" :href="'https://hfph.bsz-bw.de/cgi-bin/koha/opac-search.pl?idx=nb&weight_search=1&q=' + book.isbn" target="_blank">
+                      &emsp;<font-awesome-icon icon="book-open-reader" size="xs" /> HFPH-OPAC
+                    </a>
+                    <a v-if="!book.isbn && !book.href" :href="'https://duckduckgo.com/?q=' + book.name" target="_blank">
+                      &emsp;<font-awesome-icon icon="magnifying-glass" size="xs" /> Websuche
+                    </a>
+                  </li>
+                </ul>
+                <!--eslint-enable-->
+
+                <h3
                   v-if="
                     !!props.row.nfd_kommentar
                       || !!props.row.ed_comment
@@ -227,6 +251,14 @@ export default {
     this.fetchSomething()
   },
   methods: {
+    makeList (obj) {
+      if (!obj || obj.trim().length === 0 || Object.keys(obj).length === 0) {
+        return
+      }
+
+      const books = JSON.parse('[' + obj + ']')
+      return books
+    },
     stripStyles (string) {
       string = string
         .replace(/(<p>&nbsp;<\/p>)/gi, '')
@@ -278,6 +310,15 @@ export default {
   .hero {
     * {
       color: $hfph-blau;
+    }
+  }
+
+  ul.books {
+    list-style: disc;
+
+    li {
+      padding-left: .5rem;
+      margin-left: 1.5rem;
     }
   }
 
