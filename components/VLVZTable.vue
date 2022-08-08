@@ -118,6 +118,10 @@
                       <b>Bis: </b>{{ props.row.Uhrzeit_bis }}
                     </li>
                     -->
+                    <li v-if="!!props.row.kb_v_comment">
+                      <b>Hinweis: </b>
+                      <p v-if="!!props.row.kb_v_comment" v-html="stripStyles( props.row.kb_v_comment )" />
+                    </li>
                     <li v-if="!!props.row.Termine_mit_Uhrzeit">
                       <b>Termine: </b>
                       <ul>
@@ -215,17 +219,13 @@
                 <!--eslint-enable-->
 
                 <h3
-                  v-if="
-                    !!props.row.nfd_kommentar
-                      || !!props.row.ed_comment
-                  "
+                  v-if="!!props.row.nfd_kommentar"
                   class="is-size-5 mt-2 mb-1"
                 >
                   Kommentar
                 </h3>
                 <!-- eslint-disable vue/no-v-html -->
                 <div v-if="!!props.row.nfd_kommentar" v-html="stripStyles( props.row.nfd_kommentar )" />
-                <div v-if="!!props.row.ed_comment" v-html="stripStyles( props.row.ed_comment )" />
                 <!--eslint-enable-->
               </b-tab-item>
             </b-tabs>
