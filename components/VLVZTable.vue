@@ -120,7 +120,11 @@
                     -->
                     <li v-if="!!props.row.kb_v_comment">
                       <b>Hinweis: </b>
-                      <p v-if="!!props.row.kb_v_comment" v-html="stripStyles( props.row.kb_v_comment )" />
+                      <ul v-if="!!props.row.kb_v_comment">
+                        <li>
+                          {{ stripStyles( props.row.kb_v_comment ) }}
+                        </li>
+                      </ul>
                     </li>
                     <li v-if="!!props.row.Termine_mit_Uhrzeit">
                       <b>Termine: </b>
