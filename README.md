@@ -1,6 +1,8 @@
 # HFPH-VVZ
 
-https://vvz.hfph.de
+[Munich School of Philosophy](https://hfph.de) course catalogue frontend, data managed in AcademyFIVE.
+
+- https://vvz.hfph.de
 
 ## Build Setup
 
