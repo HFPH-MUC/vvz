@@ -108,10 +108,10 @@
                     <li v-if="props.row.nfd_sws">
                       <b>SWS: </b>{{ props.row.nfd_sws }}
                     </li>
-                    <li v-if="props.row.Raum">
+                    <!--<li v-if="props.row.Raum">
                       <b>Raum: </b>{{ props.row.Raum }}
                     </li>
-                    <!--<li v-if="props.row.Uhrzeit_von">
+                    <li v-if="props.row.Uhrzeit_von">
                       <b>Von: </b>{{ props.row.Uhrzeit_von }}
                     </li>
                     <li v-if="props.row.Uhrzeit_bis">
@@ -126,10 +126,10 @@
                         </li>
                       </ul>
                     </li>
-                    <li v-if="!!props.row.Termine_mit_Uhrzeit">
+                    <li v-if="!!props.row.Termine_mit_Uhrzeit_und_Raum">
                       <b>Termine: </b>
                       <ul>
-                        <li v-for="( item ) in splitStringToList( props.row.Termine_mit_Uhrzeit )" :key="item">
+                        <li v-for="( item ) in splitStringToList( props.row.Termine_mit_Uhrzeit_und_Raum )" :key="item">
                           <span style="font-size: .93rem; font-family: 'Lucida Console', monospace">{{ item }}</span>
                         </li>
                       </ul>
