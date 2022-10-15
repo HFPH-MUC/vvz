@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="hero mb-5">
-      <h1 class="title is-hfph-blau">
-        Vorlesungsverzeichnis
-      </h1>
+      <NavMini />
 
       <b-field>
         <b-select
@@ -311,12 +309,6 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-  .hero {
-    * {
-      color: $hfph-blau;
-    }
-  }
-
   ul.books {
     list-style: disc;
 
