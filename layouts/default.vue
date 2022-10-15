@@ -39,7 +39,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
-          Vorlesungsverzeichnis der <strong>
+          Ein Angebot der <strong>
             <a href="hfph.de" target="_blank">Hochschule für Philosophie München</a>
           </strong>
         </p>
