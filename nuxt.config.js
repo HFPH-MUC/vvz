@@ -60,8 +60,25 @@ export default {
     ['nuxt-buefy', { css: false}],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/dayjs',
   ],
+
+  dayjs: {
+    locales: ['de'],
+    defaultLocale: 'de',
+    defaultTimeZone: 'Europe/Berlin',
+    plugins: [
+      'utc',
+      'timezone',
+      'duration',
+      'IsBetween',
+      'IsToday',
+      'IsTomorrow',
+      'IsYesterday',
+      'RelativeTime'
+    ]
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
