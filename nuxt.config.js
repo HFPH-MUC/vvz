@@ -94,6 +94,11 @@ export default {
     target: 'https://hfph.academyfive.net/connect/data.php?view=142&token=8526-11BD-4B02-365E-8DD7-D025-5A4C-C0EC&key=15FE-9E19-377E-1CAA-2E67-D9B8-4EAE-B866&format=json&format=json&x=y',
       changeOrigin: true
     },
+    '/a5-rp-api': {
+    // `&x=y` am Ende, sonst kein JSON sondern HTML
+    target: 'https://hfph.academyfive.net/connect/data.php?view=44&token=89CB-2275-E2A6-1467-5996-4C76-B540-C6AA&key=2660-08F0-CCAD-99BA-8F7B-67D9-6230-7F53&format=json&x=y',
+      changeOrigin: true
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
