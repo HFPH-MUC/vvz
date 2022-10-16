@@ -82,9 +82,9 @@ export default {
   data () {
     const today = new Date()
 
+  data () {
     return {
       selected: new Date(),
-      minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
       loading: true,
       isLoading: false,
       isFullPage: true,
