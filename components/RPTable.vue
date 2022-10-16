@@ -4,10 +4,10 @@
       <NavMini />
 
       <b-datepicker
+        v-if="displayStyle != 'foyer'"
         v-model="selected"
         :show-week-number="true"
-        :locale="de-DE"
-        :min-date="minDate"
+        :locale="'de-DE'"
         placeholder="Startdatum auswählen"
         icon="calendar-today"
         :icon-right="selected ? 'close-circle' : ''"
@@ -17,7 +17,12 @@
       />
     </div>
 
-    <b-button class="mb-3" type="is-hfph-gelb" @click="fetchRP()">
+    <b-button
+      v-if="displayStyle != 'foyer'"
+      class="mb-3"
+      type="is-hfph-gelb"
+      @click="fetchRP()"
+    >
       Neu laden
     </b-button>
 
@@ -37,7 +42,7 @@
         field="timestamp_start"
         label="Datum und Uhrzeit"
         width="280"
-        searchable
+        :searchable="(displayStyle != 'foyer') ? true : false"
         sortable
       >
         <span :class="setDateIndicationStyle(props.row.timestamp_start)">
@@ -55,7 +60,7 @@
         label="Veranstaltung"
         width="600"
         sortable
-        searchable
+        :searchable="(displayStyle != 'foyer') ? true : false"
       >
         <span :class="setDateIndicationStyle(props.row.timestamp_start)">
           {{ props.row.Bezeichnung }}
@@ -67,7 +72,7 @@
         field="Raum"
         label="Raum"
         width="80"
-        searchable
+        :searchable="(displayStyle != 'foyer') ? true : false"
       >
         {{ props.row.pr_name }}
       </b-table-column>
@@ -79,8 +84,13 @@
 import dayjs from 'dayjs'
 
 export default {
-  data () {
-    const today = new Date()
+  props: {
+    displayStyle: {
+      type: String,
+      default: '',
+      required: false
+    }
+  },
 
   data () {
     return {

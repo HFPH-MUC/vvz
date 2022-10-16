@@ -5,7 +5,7 @@
         Vorlesungsverzeichnis
       </NuxtLink>
       •
-      <NuxtLink to="/rp">
+      <NuxtLink :to="(!$route.path.includes('/foyer')) ? '/rp' : '/rp/foyer'">
         Raumplan
       </NuxtLink>
     </h1>
