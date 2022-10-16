@@ -11,44 +11,50 @@
     <b-table
       :data="timetable"
       striped
-      default-sort="Datum"
+      default-sort="Datum und Uhrzeit"
       detailed
-      detail-key="Datum"
+      detail-key="Datum und Uhrzeit"
       :show-detail-icon="false"
       style="width: 100%;"
     >
       <b-table-column
         v-slot="props"
-        field="Name"
-        label="Bezeichnung"
-        width="340"
-        sortable
+        field="timestamp_start"
+        label="Datum und Uhrzeit"
+        width="300"
         searchable
+        sortable
       >
-        {{ props.row.Bezeichnung }}
+        <span :class="setDateIndicationStyle(props.row.timestamp_start)">
+          <code>{{ $dayjs(props.row.timestamp_start).format('DD.MM.') }}</code>
+          &ensp;
+          <code>{{ $dayjs(props.row.timestamp_start).format('HH:mm') }}</code>
+          <span class="has-text-grey">›</span>
+          <code>{{ $dayjs(props.row.timestamp_end).format('HH:mm') }}</code>
+        </span>
       </b-table-column>
 
       <b-table-column
         v-slot="props"
-        field="Datum"
-        label="Datum"
-        width="180"
-        searchable
+        field="Bezeichnung"
+        label="Veranstaltung"
+        width="600"
         sortable
+        searchable
       >
-        {{ props.row.Datum }}
+        <span :class="setDateIndicationStyle(props.row.timestamp_start)">
+          {{ props.row.Bezeichnung }}
+        </span>
       </b-table-column>
 
       <b-table-column
         v-slot="props"
-        field="Von Bis"
-        label="Von Bis"
-        width="180"
+        field="Raum"
+        label="Raum"
+        width="80"
         searchable
       >
-        {{ $dayjs(props.row.timestamp_start).format('HH:mm') }}
-        ›
-        {{ $dayjs(props.row.timestamp_end).format('HH:mm') }}
+        {{ props.row.pr_name }}
       </b-table-column>
     </b-table>
   </div>
@@ -66,49 +72,40 @@ export default {
       timetable: []
     }
   },
+
   mounted () {
     this.fetchRP()
   },
+
   methods: {
-    makeList (obj) {
-      if (!obj || obj.trim().length === 0 || Object.keys(obj).length === 0) {
-        return
+    setDateIndicationStyle (timestamp) {
+      let result = ''
+
+      // per URL-Parameter werden Termine
+      // immer erst ab dem heutigen Tag angezeigt
+      // `.isBefore` darf also mit timestamp vergleichen
+      if (dayjs().isBefore(timestamp)) {
+        result = 'isBefore'
+      } else if (dayjs().isAfter(timestamp, 'h')) {
+        result = 'isAfter'
+      } else {
+        result = 'now'
       }
 
-      const books = JSON.parse('[' + obj + ']')
-      return books
-    },
-    stripStyles (string) {
-      string = string
-        .replace(/(<p>&nbsp;<\/p>)/gi, '')
-        .replace(/(<p><\/p>)/gi, '')
-        .replace(/(style=".*;")/gi, '')
+      // dayjs().diff(date, 'm')
 
-      return string
-    },
-    splitStringToList (str, sort = false) {
-      if (!str || str.trim().length === 0) {
-        return
-      }
-
-      let arr = str.split(', ')
-
-      if (sort === true) {
-        arr = arr.sort()
-      }
-
-      return arr
+      return result
     },
 
     async fetchRP () {
       this.isLoading = true
-      await this.$axios.$get('/a5-rp-api')
+      const today = dayjs().format('YYYY-MM-DD')
+
+      await this.$axios.$get('/a5-rp-api' + '&earliest=' + today)
         .then((response) => {
           this.timetable = response
-          // const filtered = response.filter(([key, value]) => typeof value === 'string');
-
-          console.log(response)
-          console.log(dayjs().format())
+          // const filtered = response.filter(([key, value]) => typeof value === 'string')
+          // console.log(response)
         })
         .finally(() => (
           setTimeout(() => { this.isLoading = false }, 100) // a few ms to prevent blitz
@@ -119,5 +116,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .isAfter, .isAfter CODE {
+    color: #7e0000;
+  }
+
+  .isBefore, .isBefore CODE {
+    color: #393939;
+  }
+
+  .now, .now CODE {
+    color: $hfph-blau;
+  }
 
 </style>

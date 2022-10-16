@@ -76,7 +76,8 @@ export default {
       'IsToday',
       'IsTomorrow',
       'IsYesterday',
-      'RelativeTime'
+      'RelativeTime',
+      'Calendar'
     ]
   },
 
