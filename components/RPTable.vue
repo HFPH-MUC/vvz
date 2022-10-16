@@ -39,7 +39,6 @@
       :paginated="true"
       :per-page="15"
       :pagination-simple="true"
-
     >
       <b-table-column
         v-slot="props"
@@ -98,11 +97,21 @@ export default {
 
   data () {
     return {
+      filterStart: dayjs().format('YYYY-MM-DD'),
       selected: new Date(),
       loading: true,
       isLoading: false,
       isFullPage: true,
       timetable: []
+    }
+  },
+
+  watch: {
+    selected (val, oldVal) {
+      console.log(val, oldVal)
+      this.filterStart = dayjs(val).format('YYYY-MM-DD')
+      console.log(this.filterStart)
+      this.fetchRP()
     }
   },
 
@@ -112,7 +121,7 @@ export default {
 
   methods: {
     clearDate () {
-      this.selected = null
+      this.selected = new Date()
     },
 
     foyer () {
@@ -140,9 +149,8 @@ export default {
 
     async fetchRP () {
       this.isLoading = true
-      const today = dayjs().format('YYYY-MM-DD')
 
-      await this.$axios.$get('/a5-rp-api' + '&earliest=' + today)
+      await this.$axios.$get('/a5-rp-api' + '&earliest=' + this.filterStart)
         .then((response) => {
           this.timetable = response
           // const filtered = response.filter(([key, value]) => typeof value === 'string')
