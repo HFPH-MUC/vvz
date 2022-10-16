@@ -73,7 +73,7 @@ export default {
       'timezone',
       'duration',
       'IsBetween',
-      'IsToday',
+      'istoday',
       'IsTomorrow',
       'IsYesterday',
       'RelativeTime',
