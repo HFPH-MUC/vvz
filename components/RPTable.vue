@@ -36,13 +36,17 @@
       detail-key="Datum und Uhrzeit"
       :show-detail-icon="false"
       style="width: 100%;"
+      :paginated="true"
+      :per-page="15"
+      :pagination-simple="true"
+
     >
       <b-table-column
         v-slot="props"
         field="timestamp_start"
         label="Datum und Uhrzeit"
         width="280"
-        :searchable="(displayStyle != 'foyer') ? true : false"
+        :searchable="foyer()"
         sortable
       >
         <span :class="setDateIndicationStyle(props.row.timestamp_start)">
@@ -60,7 +64,7 @@
         label="Veranstaltung"
         width="600"
         sortable
-        :searchable="(displayStyle != 'foyer') ? true : false"
+        :searchable="foyer()"
       >
         <span :class="setDateIndicationStyle(props.row.timestamp_start)">
           {{ props.row.Bezeichnung }}
@@ -72,7 +76,7 @@
         field="Raum"
         label="Raum"
         width="80"
-        :searchable="(displayStyle != 'foyer') ? true : false"
+        :searchable="foyer()"
       >
         {{ props.row.pr_name }}
       </b-table-column>
@@ -109,6 +113,10 @@ export default {
   methods: {
     clearDate () {
       this.selected = null
+    },
+
+    foyer () {
+      return (this.displayStyle !== 'foyer')
     },
 
     setDateIndicationStyle (timestamp) {
