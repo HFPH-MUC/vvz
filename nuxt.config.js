@@ -72,12 +72,12 @@ export default {
       'utc',
       'timezone',
       'duration',
-      'IsBetween',
-      'istoday',
-      'IsTomorrow',
-      'IsYesterday',
-      'RelativeTime',
-      'Calendar'
+      'isBetween',
+      'isToday',
+      'isTomorrow',
+      'isYesterday',
+      'relativeTime',
+      'calendar'
     ]
   },
 
