@@ -4,11 +4,17 @@
       <NavMini />
 
       <b-datepicker
-        v-model="date"
-        placeholder="Click to select..."
-        :unselectable-days-of-week="[0, 6]"
-      >
-      </b-datepicker>
+        v-model="selected"
+        :show-week-number="true"
+        :locale="de-DE"
+        :min-date="minDate"
+        placeholder="Startdatum auswählen"
+        icon="calendar-today"
+        :icon-right="selected ? 'close-circle' : ''"
+        icon-right-clickable
+        trap-focus
+        @icon-right-click="clearDate"
+      />
     </div>
 
     <b-button class="mb-3" type="is-hfph-gelb" @click="fetchRP()">
@@ -30,7 +36,7 @@
         v-slot="props"
         field="timestamp_start"
         label="Datum und Uhrzeit"
-        width="300"
+        width="280"
         searchable
         sortable
       >
@@ -74,7 +80,11 @@ import dayjs from 'dayjs'
 
 export default {
   data () {
+    const today = new Date()
+
     return {
+      selected: new Date(),
+      minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
       loading: true,
       isLoading: false,
       isFullPage: true,
@@ -87,6 +97,10 @@ export default {
   },
 
   methods: {
+    clearDate () {
+      this.selected = null
+    },
+
     setDateIndicationStyle (timestamp) {
       let result = ''
 
