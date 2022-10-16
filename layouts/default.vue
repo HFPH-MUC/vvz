@@ -9,7 +9,7 @@
       <div
         v-if="!$route.path.includes('/foyer')"
         class="navbar-brand has-text-weight-bold is-size-4"
-        >
+      >
         <a class="navbar-item is-hfph-blau" href="https://www.hfph.de" target="_blank" style="color: ;">
           HFPH
         </a>
