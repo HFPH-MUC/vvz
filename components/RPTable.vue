@@ -1,6 +1,15 @@
 <template>
   <div>
-    <NavMini />
+    <div class="hero mb-5">
+      <NavMini />
+
+      <b-datepicker
+        v-model="date"
+        placeholder="Click to select..."
+        :unselectable-days-of-week="[0, 6]"
+      >
+      </b-datepicker>
+    </div>
 
     <b-button class="mb-3" type="is-hfph-gelb" @click="fetchRP()">
       Neu laden
