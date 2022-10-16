@@ -1,11 +1,15 @@
 <template>
   <div>
     <nav
-      class="navbar header has-shadow is-hfph-gelb"
+      class="navbar header is-hfph-gelb"
       role="navigation"
       aria-label="main navigation"
+      :style="($route.path.includes('/foyer')) ? 'height: 30px;' : ''"
     >
-      <div class="navbar-brand has-text-weight-bold is-size-4">
+      <div
+        v-if="!$route.path.includes('/foyer')"
+        class="navbar-brand has-text-weight-bold is-size-4"
+        >
         <a class="navbar-item is-hfph-blau" href="https://www.hfph.de" target="_blank" style="color: ;">
           HFPH
         </a>
@@ -13,29 +17,11 @@
     </nav>
 
     <section class="main-content columns">
-      <!--<aside class="column is-2 section">
-        <p class="menu-label is-hidden-touch">
-          General
-        </p>
-        <ul class="menu-list">
-          <li
-            v-for="(item, key) of items"
-            :key="key"
-          >
-            <NuxtLink
-              :to="item.to"
-              exact-active-class="is-active"
-            >
-              <b-icon :icon="item.icon" /> {{ item.title }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </aside>-->
-
       <div class="container column is-10">
         <Nuxt />
       </div>
     </section>
+
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
@@ -69,23 +55,7 @@
 
 <script>
 export default {
-  name: 'DefaultLayout',
-  data () {
-    return {
-      items: [
-        {
-          title: 'Home',
-          icon: 'home',
-          to: { name: 'index' }
-        },
-        {
-          title: 'Inspire',
-          icon: 'lightbulb',
-          to: { name: 'inspire' }
-        }
-      ]
-    }
-  }
+  name: 'DefaultLayout'
 }
 </script>
 
