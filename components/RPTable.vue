@@ -44,7 +44,7 @@
         v-slot="props"
         field="timestamp_start"
         label="Datum und Uhrzeit"
-        width="280"
+        width="240"
         :searchable="foyer()"
         sortable
       >
@@ -61,20 +61,33 @@
         v-slot="props"
         field="Bezeichnung"
         label="Veranstaltung"
-        width="600"
+        width="640"
         sortable
         :searchable="foyer()"
       >
         <span :class="setDateIndicationStyle(props.row.timestamp_start)">
-          {{ props.row.Bezeichnung }}
+          <span :class="(props.row.ecet_id === '1') ? 'typ_id_' + props.row.ecet_id : ''">
+            {{ props.row.Bezeichnung }}
+          </span>
         </span>
+      </b-table-column>
+
+      <b-table-column
+        v-slot="props"
+        field="kb_clsl_p_kurz"
+        label="Dozent*in"
+        width="200"
+        sortable
+        :searchable="foyer()"
+      >
+        {{ props.row.kb_clsl_p_kurz | truncate(20, '…') }}
       </b-table-column>
 
       <b-table-column
         v-slot="props"
         field="Raum"
         label="Raum"
-        width="80"
+        width="120"
         :searchable="foyer()"
       >
         {{ props.row.pr_name }}
@@ -175,6 +188,10 @@ export default {
 
   .now, .now CODE {
     color: $hfph-blau;
+  }
+
+  .typ_id_3, .typ_id_6 {
+    // css für externe und n-ö. Veranstaltungen
   }
 
 </style>
