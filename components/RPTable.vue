@@ -121,9 +121,7 @@ export default {
 
   watch: {
     selected (val, oldVal) {
-      console.log(val, oldVal)
       this.filterStart = dayjs(val).format('YYYY-MM-DD')
-      console.log(this.filterStart)
       this.fetchRP()
     }
   },
