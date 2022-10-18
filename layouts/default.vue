@@ -4,7 +4,7 @@
       class="navbar header is-hfph-gelb"
       role="navigation"
       aria-label="main navigation"
-      :style="($route.path.includes('/foyer')) ? 'height: 30px;' : ''"
+      :style="($route.path.includes('/foyer')) ? 'min-height: 30px; height: 30px;' : ''"
     >
       <div
         v-if="!$route.path.includes('/foyer')"
