@@ -22,7 +22,10 @@
       </div>
     </section>
 
-    <footer class="footer">
+    <footer
+      v-if="!$route.path.includes('/foyer')"
+      class="footer"
+    >
       <div class="content has-text-centered">
         <p>
           Ein Angebot der <strong>
