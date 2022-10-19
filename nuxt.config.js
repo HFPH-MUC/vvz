@@ -70,6 +70,7 @@ export default {
     defaultLocale: 'de',
     defaultTimeZone: 'Europe/Berlin',
     plugins: [
+      'updateLocale',
       'utc',
       'timezone',
       'duration',

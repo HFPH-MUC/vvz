@@ -48,8 +48,9 @@
         :searchable="foyer()"
         sortable
       >
-        <span :class="setDateIndicationStyle(props.row.timestamp_start)">
-          <code>{{ $dayjs(props.row.timestamp_start).format('DD.MM.') }}</code>
+        <span :class="setDateIndicationStyle(props.row.timestamp_end)">
+          <code v-if="dateIsToday(props.row.timestamp_start) === true" >Heute&ensp;</code>
+          <code v-else>{{ $dayjs(props.row.timestamp_start).format('DD.MM.') }}</code>
           &ensp;
           <code>{{ $dayjs(props.row.timestamp_start).format('HH:mm') }}</code>
           <span class="has-text-grey">›</span>
@@ -65,7 +66,7 @@
         sortable
         :searchable="foyer()"
       >
-        <span :class="setDateIndicationStyle(props.row.timestamp_start)">
+        <span :class="setDateIndicationStyle(props.row.timestamp_end)">
           <span :class="(props.row.ecet_id === '1') ? 'typ_id_' + props.row.ecet_id : ''">
             {{ props.row.Bezeichnung }}
           </span>
@@ -80,7 +81,9 @@
         sortable
         :searchable="foyer()"
       >
-        {{ props.row.kb_clsl_p_kurz | truncate(20, '…') }}
+        <span :class="setDateIndicationStyle(props.row.timestamp_end)">
+          {{ props.row.kb_clsl_p_kurz | truncate(20, '…') }}
+        </span>
       </b-table-column>
 
       <b-table-column
@@ -90,7 +93,9 @@
         width="120"
         :searchable="foyer()"
       >
-        {{ props.row.pr_name }}
+        <span :class="setDateIndicationStyle(props.row.timestamp_end)">
+          {{ props.row.pr_name }}
+        </span>
       </b-table-column>
     </b-table>
   </div>
@@ -139,15 +144,25 @@ export default {
       return (this.displayStyle !== 'foyer')
     },
 
+    dateIsToday (timestamp) {
+      let result = false
+
+      if (dayjs(timestamp).isToday()) {
+        result = true
+      }
+
+      return result
+    },
+
     setDateIndicationStyle (timestamp) {
       let result = ''
 
       // per URL-Parameter werden Termine
       // immer erst ab dem heutigen Tag angezeigt
       // `.isBefore` darf also mit timestamp vergleichen
-      if (dayjs().isBefore(timestamp)) {
+      if (dayjs().isBefore(timestamp, 'd')) {
         result = 'isBefore'
-      } else if (dayjs().isAfter(timestamp, 'h')) {
+      } else if (dayjs().isAfter(timestamp, 'm')) {
         result = 'isAfter'
       } else {
         result = 'now'
@@ -177,15 +192,19 @@ export default {
 
 <style lang="scss" scoped>
   .isAfter, .isAfter CODE {
-    color: #7e0000;
+    color: #777;
   }
 
   .isBefore, .isBefore CODE {
-    color: #393939;
+    color: #444;
   }
 
-  .now, .now CODE {
+  .now {
     color: $hfph-blau;
+    & CODE {
+      color: $hfph-blau;
+      background-color: $hfph-blau-light;
+    }
   }
 
   .typ_id_3, .typ_id_6 {
