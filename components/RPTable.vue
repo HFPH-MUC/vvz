@@ -48,8 +48,8 @@
         :searchable="foyer()"
         sortable
       >
-        <span :class="setDateIndicationStyle(props.row.timestamp_end)">
-          <code v-if="dateIsToday(props.row.timestamp_start) === true" >Heute&ensp;</code>
+        <span :class="setDateIndicationStyle(props.row.timestamp_end)" class="nowrap">
+          <code v-if="dateIsToday(props.row.timestamp_start) === true" class="heutespan">Heute</code>
           <code v-else>{{ $dayjs(props.row.timestamp_start).format('DD.MM.') }}</code>
           &ensp;
           <code>{{ $dayjs(props.row.timestamp_start).format('HH:mm') }}</code>
@@ -191,6 +191,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .heutespan {
+    padding-right: 11px;
+    padding-left: 11px;
+  }
+
   .isAfter, .isAfter CODE {
     color: #777;
   }
