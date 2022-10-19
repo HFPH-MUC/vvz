@@ -1,12 +1,27 @@
 <template>
   <div class="hero mb-5">
     <h1 class="title">
-      <NuxtLink to="/">
+      <NuxtLink
+        v-if="!$route.path.includes('/foyer')"
+        to="/"
+      >
         Vorlesungsverzeichnis
       </NuxtLink>
-      •
+      <span v-if="!$route.path.includes('/foyer')">•</span>
       <NuxtLink :to="(!$route.path.includes('/foyer')) ? '/rp' : '/rp/foyer'">
         Raumplan
+        <span
+          v-if="$route.path.includes('/foyer')"
+          class="tag is-light is-medium has-text-weight-light"
+        >
+          zuletzt aktualisiert am {{ $dayjs().format('DD.MM. [um] HH:mm') }}
+        </span>
+        <span
+          v-if="$route.path.includes('/foyer')"
+          class="tag is-info is-light is-medium"
+        >
+          raumplan.hfph.de
+        </span>
       </NuxtLink>
     </h1>
   </div>
@@ -17,6 +32,13 @@ export default {
   name: 'MiniNav'
 }
 </script>
+
+<style lang="scss" scoped>
+  .hero h1.title span.tag {
+    float: right;
+    margin-left: .5rem;
+  }
+</style>
 
 <style lang="scss">
   .hero {
