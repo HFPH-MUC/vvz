@@ -88,7 +88,7 @@
 
       <b-table-column
         v-slot="props"
-        field="Raum"
+        field="pr_name"
         label="Raum"
         width="120"
         :searchable="foyer()"
