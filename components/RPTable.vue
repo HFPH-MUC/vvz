@@ -31,7 +31,7 @@
     <b-table
       :data="timetable"
       striped
-      default-sort="Datum und Uhrzeit"
+      default-sort=""
       detailed
       detail-key="Datum und Uhrzeit"
       :show-detail-icon="false"
