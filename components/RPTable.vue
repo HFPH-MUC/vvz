@@ -210,6 +210,7 @@ export default {
 
   .now {
     color: $hfph-blau;
+    font-weight: 500;
     & CODE {
       color: $hfph-blau;
       background-color: $hfph-blau-light;
