@@ -83,7 +83,7 @@
         :searchable="foyer()"
       >
         <span :class="setDateIndicationStyle(props.row.timestamp_end)">
-          {{ props.row.kb_clsl_p_kurz | truncate(20, '…') }}
+          {{ props.row.kb_clsl_p_kurz | truncate(19, '…') }}
         </span>
       </b-table-column>
 

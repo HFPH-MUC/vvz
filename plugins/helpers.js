@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 const filter = function (text, length, clamp) {
-  clamp = clamp || '...'
+  clamp = clamp || '…'
   const node = document.createElement('div')
   node.innerHTML = text
   const content = node.textContent
