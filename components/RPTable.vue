@@ -212,16 +212,16 @@ export default {
 
 <style lang="scss">
   .diff-4 {
-    opacity: 50%;
+    opacity: .50;
   }
   .diff-3 {
-    opacity: 60%;
+    opacity: .60;
   }
   .diff-2 {
-    opacity: 75%;
+    opacity: .75;
   }
   .diff-1 {
-    opacity: 90%;
+    opacity: .90;
   }
 </style>
 
