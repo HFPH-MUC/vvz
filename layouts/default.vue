@@ -71,4 +71,8 @@ export default {
   a svg {
     height: inherit;
   }
+
+  code {
+    font-family: SFMono, monospace;
+  }
 </style>
