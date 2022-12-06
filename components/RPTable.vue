@@ -39,6 +39,7 @@
       :paginated="true"
       :per-page="15"
       :pagination-simple="true"
+      :row-class="(row, index) => setDateIndicationStyleFade(row.timestamp_end)"
     >
       <b-table-column
         v-slot="props"
@@ -115,7 +116,7 @@ export default {
 
   data () {
     return {
-      filterStart: dayjs().format('YYYY-MM-DD'),
+      filterStart: dayjs().subtract(4, 'hour').format('YYYY-MM-DD HH'),
       selected: new Date(),
       loading: true,
       isLoading: false,
@@ -173,6 +174,25 @@ export default {
       return result
     },
 
+    setDateIndicationStyleFade (timestamp) {
+      let result = ''
+      const diff = dayjs().diff(timestamp, 'h')
+
+      if (diff >= 4) {
+        result = 'diff-4'
+      } else if (diff === 3) {
+        result = 'diff-3'
+      } else if (diff === 2) {
+        result = 'diff-2'
+      } else if (diff === 1) {
+        result = 'diff-1'
+      }
+
+      // console.log(dayjs().subtract(6, 'hour'))
+
+      return result
+    },
+
     async fetchRP () {
       this.isLoading = true
 
@@ -189,6 +209,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .diff-4 {
+    opacity: 50%;
+  }
+  .diff-3 {
+    opacity: 60%;
+  }
+  .diff-2 {
+    opacity: 75%;
+  }
+  .diff-1 {
+    opacity: 90%;
+  }
+</style>
 
 <style lang="scss" scoped>
   .nowrap {
