@@ -189,6 +189,8 @@ export default {
         result = 'diff-2'
       } else if (diff === 1) {
         result = 'diff-1'
+      } else if (diff >= 0) {
+        result = 'diff-0'
       }
 
       // console.log(dayjs().subtract(6, 'hour'))
@@ -214,9 +216,8 @@ export default {
 </script>
 
 <style lang="scss">
-  .ed_psid-8, .ed_psid-8 * {
-    // text-decoration: line-through;
-    color: #c90003!important;
+  .ed_psid-8:not([class*=" diff"], [class^="diff-"]) * {
+    color: #c90003;
   }
   .diff-4 {
     opacity: .50;
