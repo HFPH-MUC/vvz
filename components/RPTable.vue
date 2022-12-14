@@ -39,7 +39,7 @@
       :paginated="true"
       :per-page="15"
       :pagination-simple="true"
-      :row-class="(row, index) => setDateIndicationStyleFade(row.timestamp_end)"
+      :row-class="(row, index) => setDateIndicationStyleFade(row.timestamp_end) + ' ed_psid-' + row.ed_psid"
     >
       <b-table-column
         v-slot="props"
@@ -69,6 +69,9 @@
       >
         <span :class="setDateIndicationStyle(props.row.timestamp_end)">
           <span :class="(props.row.ecet_id === '1') ? 'typ_id_' + props.row.ecet_id : ''">
+            <span v-if="props.row.ed_psid === '8'">
+              ENTFÄLLT:
+            </span>
             {{ props.row.Bezeichnung }}
           </span>
         </span>
@@ -211,6 +214,10 @@ export default {
 </script>
 
 <style lang="scss">
+  .ed_psid-8, .ed_psid-8 * {
+    // text-decoration: line-through;
+    color: #c90003!important;
+  }
   .diff-4 {
     opacity: .50;
   }
