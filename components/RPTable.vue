@@ -72,7 +72,12 @@
             <span v-if="props.row.ed_psid === '8'">
               ENTFÄLLT:
             </span>
-            {{ props.row.Bezeichnung }}
+            <span v-if="props.row.ed_psid != '9'">
+              {{ props.row.Bezeichnung }}
+            </span>
+            <span v-else>
+              Interne Veranstaltung
+            </span>
           </span>
         </span>
       </b-table-column>
