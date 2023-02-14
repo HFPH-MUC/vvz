@@ -11,6 +11,9 @@
           class="is-hfph-blau"
           @input="fetchSomething()"
         >
+          <option value="2023:2">
+            Sommer 2023
+          </option>
           <option value="2022:1">
             Winter 2022/2023
           </option>
