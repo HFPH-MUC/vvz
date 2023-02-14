@@ -249,7 +249,7 @@ export default {
       isLoading: false,
       isFullPage: true,
       courses: [],
-      selectSemester: '2022:1'
+      selectSemester: '2023:2'
     }
   },
   mounted () {
