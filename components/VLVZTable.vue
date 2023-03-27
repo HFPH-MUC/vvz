@@ -92,6 +92,7 @@
               <b-tab-item label="Daten" style="background-color: $white;">
                 <div class="content">
                   <ul>
+                    <li><a :href="'https://forum.hfph.de/course/view.php?idnumber=' + props.row.semester_shorthand + '-' + props.row.Angebotsnummer" target="_blank">Zum Kurs bei Moodle</a></li>
                     <li v-if="props.row.kb_clsl_p_lang">
                       <b>Dozent*in: </b>{{ props.row.kb_clsl_p_lang }}
                     </li>
