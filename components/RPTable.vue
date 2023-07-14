@@ -36,6 +36,7 @@
       detail-key="Datum und Uhrzeit"
       :show-detail-icon="false"
       style="width: 100%;"
+      :class="{ 'foyer' : (this.displayStyle == 'foyer') }"
       :paginated="true"
       :per-page="15"
       :pagination-simple="true"
@@ -221,6 +222,9 @@ export default {
 </script>
 
 <style lang="scss">
+  .foyer table tbody tr td {
+    padding: .4rem .75rem;
+  }
   .ed_psid-8:not([class*=" diff"], [class^="diff-"]) * {
     color: #c90003;
   }
