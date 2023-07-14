@@ -124,7 +124,7 @@ export default {
 
   data () {
     return {
-      filterStart: dayjs().subtract(4, 'hour').format('YYYY-MM-DD HH'),
+      filterStart: dayjs().subtract(3, 'hour').format('YYYY-MM-DD HH'),
       selected: new Date(),
       loading: true,
       isLoading: false,
