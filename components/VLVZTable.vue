@@ -12,7 +12,7 @@
           @input="fetchSomething()"
         >
           <option value="2023:1">
-            Winter 2023
+            Winter 2023/24
           </option>
           <option value="2023:2">
             Sommer 2023
