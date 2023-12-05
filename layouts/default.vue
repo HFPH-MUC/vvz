@@ -63,6 +63,11 @@ export default {
 </script>
 
 <style lang="scss">
+  .input:active, .input:focus {
+    border-color: #fcea0f;
+    box-shadow: 0 0 0 0.125em rgba(252, 234, 15, 0.15)
+  }
+
   .navbar.is-hfph-gelb .navbar-brand > .navbar-item,
   .navbar.is-hfph-gelb .navbar-brand .navbar-link {
     color: $hfph-blau;

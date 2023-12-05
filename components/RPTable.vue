@@ -125,7 +125,7 @@ export default {
 
   data () {
     return {
-      filterStart: dayjs().subtract(3, 'hour').format('YYYY-MM-DD HH'),
+      filterStart: dayjs().subtract(1, 'hour').format('YYYY-MM-DD HH'),
       selected: new Date(),
       loading: true,
       isLoading: false,
@@ -261,10 +261,10 @@ export default {
   }
 
   .now {
-    color: $hfph-blau;
+    color: $dark;
     font-weight: 500;
     & CODE {
-      color: $hfph-blau;
+      color: $dark;
       background-color: $hfph-blau-light;
     }
   }

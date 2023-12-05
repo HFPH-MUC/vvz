@@ -311,7 +311,11 @@ export default {
 
   .tabs li.is-active a,
   a {
-    color: $hfph-blau;
+    color: $dark;
+  }
+
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: $hfph-gelb;
   }
 </style>
 
