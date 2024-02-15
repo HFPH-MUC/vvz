@@ -256,7 +256,7 @@ export default {
       isLoading: false,
       isFullPage: true,
       courses: [],
-      selectSemester: '2023:1'
+      selectSemester: '2024:2'
     }
   },
   mounted () {
