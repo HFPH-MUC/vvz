@@ -26,6 +26,8 @@ export default {
     { src: '~/plugins/helpers', ssr: false }, // datepicker plugin here
   ],
 
+  devServerHandlers: [],
+
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -100,6 +102,11 @@ export default {
     '/a5-rp-api': {
     // `&x=y` am Ende, sonst kein JSON sondern HTML
     target: 'https://hfph.academyfive.net/connect/data.php?view=44&token=89CB-2275-E2A6-1467-5996-4C76-B540-C6AA&key=2660-08F0-CCAD-99BA-8F7B-67D9-6230-7F53&format=json&x=y',
+      changeOrigin: true
+    },
+    '/a5-modul-hb-api': {
+    // `&x=y` am Ende, sonst kein JSON sondern HTML
+    target: 'https://hfph.academyfive.net/connect/data.php?view=14046&token=2DF2-0607-3F3A-163F-E6DA-580A-7428-A70B&key=473C-B186-1289-D1CC-3C47-9113-E611-15D0&format=json&x=y',
       changeOrigin: true
     },
   },

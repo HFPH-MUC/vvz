@@ -25,6 +25,15 @@
           raumplan.hfph.de
         </span>
       </NuxtLink>
+
+      <span v-if="!$route.path.includes('/foyer')">•</span>
+
+      <NuxtLink
+        v-if="!$route.path.includes('/foyer')"
+        to="/modul-hb"
+      >
+        Modulhandbücher
+      </NuxtLink>
     </h1>
   </div>
 </template>
