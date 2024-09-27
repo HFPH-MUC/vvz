@@ -7,7 +7,9 @@
       >
         Vorlesungsverzeichnis
       </NuxtLink>
+
       <span v-if="!$route.path.includes('/foyer')">•</span>
+
       <NuxtLink :to="(!$route.path.includes('/foyer')) ? '/rp' : '/rp/foyer'">
         Raumplan
         <span

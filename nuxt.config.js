@@ -23,7 +23,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/helpers', ssr: false }, // datepicker plugin here 
+    { src: '~/plugins/helpers', ssr: false }, // datepicker plugin here
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -38,11 +38,11 @@ export default {
   ],
 
   styleResources: {
-     sass: [],
-     scss: ['~/assets/scss/utilities.scss'],
-     less: [],
-     stylus: [],
-     hoistUseStatements: true  // Hoists the "@use" imports. Applies only to "sass", "scss" and "less". Default: false.
+    sass: [],
+    scss: ['~/assets/scss/utilities.scss'],
+    less: [],
+    stylus: [],
+    hoistUseStatements: true // Hoists the "@use" imports. Applies only to "sass", "scss" and "less". Default: false.
   },
 
   fontawesome: {
@@ -58,7 +58,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/buefy
-    ['nuxt-buefy', { css: false}],
+    ['nuxt-buefy', { css: false }],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
