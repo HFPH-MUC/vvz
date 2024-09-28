@@ -10,36 +10,29 @@
 
     <b-loading v-model="isLoading" :is-full-page="isFullPage" :can-cancel="true" />
 
-    <b-table
-      :data="modul_hbs"
-      striped
-      default-sort="n_m_bez_de"
-      :show-detail-icon="false"
-      style="width: 100%;"
+    <b-collapse
+      v-for="(modules, studiumName) in modul_hbs_reorganized"
+      :key="studiumName"
+      :open="isOpen"
+      aria-id="contentIdForA11y2"
+      class="panel"
+      animation="slide"
     >
-      <b-table-column
-        v-slot="props"
-        field="n_m_bez_de"
-        label="Bez."
-        width="140"
-        sortable
-        searchable
-      >
-        {{ props.row.n_m_bez_de }}
-      </b-table-column>
+      <template #trigger>
+        <div
+          class="panel-heading"
+          role="button"
+          aria-controls="contentIdForA11y2"
+          :aria-expanded="isOpen"
+        >
+          <strong>{{ studiumName }}</strong>
+        </div>
+      </template>
 
-      <b-table-column
-        v-slot="props"
-        field="n_m_kuerzel"
-        label="Kürzel"
-        width="140"
-        sortable
-        searchable
-      >
-        {{ props.row.n_m_kuerzel }}
-      </b-table-column>
-
-    </b-table>
+      <div class="panel-block">
+        Test
+      </div>
+    </b-collapse>
   </div>
 </template>
 
@@ -50,6 +43,7 @@ export default {
       loading: true,
       isLoading: false,
       isFullPage: true,
+      isOpen: false,
       modul_hbs: [],
       modul_hbs_reorganized: {}
     }
@@ -72,6 +66,7 @@ export default {
       const books = JSON.parse('[' + obj + ']')
       return books
     },
+
     stripStyles (string) {
       string = string
         .replace(/(<p>&nbsp;<\/p>)/gi, '')
@@ -80,6 +75,7 @@ export default {
 
       return string
     },
+
     splitStringToList (str, sort = false) {
       if (!str || str.trim().length === 0) {
         return
