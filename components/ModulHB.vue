@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="hero mb-5">
-      <NavMini />
+      <NavMini/>
     </div>
 
     <b-button class="mb-3" type="is-hfph-gelb" @click="fetchSomething()">
       Neu laden
     </b-button>
 
-    <b-loading v-model="isLoading" :is-full-page="isFullPage" :can-cancel="true" />
+    <b-loading v-model="isLoading" :is-full-page="isFullPage" :can-cancel="true"/>
 
     <b-collapse
       v-for="(modules, studiumName) in modul_hbs_reorganized"
@@ -29,8 +29,24 @@
         </div>
       </template>
 
-      <div class="panel-block">
-        Test
+      <div
+        v-for="modul in modules"
+        :key="modul.n_m_kuerzel"
+      >
+        <div class="panel-block">
+          <b-tag type="is-info is-light" size="is-medium">
+            {{ modul.n_m_kuerzel }}
+          </b-tag>
+
+          <h2 class="subtitle is-5" style="font-weight: 500">
+            &nbsp;{{ modul.n_m_bez_de }}
+          </h2>
+        </div>
+
+        <div class="card-content">
+          <h5 class="subtitle is-5">Beschreibung</h5>
+          <div v-html="modul.n_m_d_beschreibung"></div>
+        </div>
       </div>
     </b-collapse>
   </div>
@@ -132,6 +148,9 @@ export default {
 </script>
 
 <style lang="scss">
+.card-content p {
+  margin-bottom: 1rem;
+}
 </style>
 
 <style lang="scss" scoped>
