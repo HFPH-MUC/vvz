@@ -50,12 +50,18 @@ export default {
       loading: true,
       isLoading: false,
       isFullPage: true,
-      modul_hbs: []
+      modul_hbs: [],
+      modul_hbs_reorganized: {}
     }
   },
   mounted () {
     this.fetchSomething()
   },
+
+  created () {
+    this.modul_hbs_reorganized = this.reorganizeDataByStudiumName(this.modul_hbs)
+  },
+
   methods: {
     makeList (obj) {
       if (!obj || obj.trim().length === 0 || Object.keys(obj).length === 0) {
@@ -92,10 +98,37 @@ export default {
       await this.$axios.$get('/a5-modul-hb-api')
         .then((response) => {
           this.modul_hbs = response
+          this.modul_hbs_reorganized = this.reorganizeDataByStudiumName(response)
         })
         .finally(() => (
-          setTimeout(() => { this.isLoading = false }, 200) // a few ms to prevent blitz
+          setTimeout(() => {
+            this.isLoading = false
+          }, 200) // a few ms to prevent blitz
         ))
+    },
+
+    reorganizeDataByStudiumName (data) {
+      const result = {}
+
+      data.forEach((item) => {
+        let studiumNames
+        if (!item.GC_studium_name) {
+          studiumNames = [item.n_m_d_name]
+        } else if (item.GC_studium_name.includes(',')) {
+          studiumNames = item.GC_studium_name.split(',').map(name => name.trim())
+        } else {
+          studiumNames = [item.GC_studium_name]
+        }
+
+        studiumNames.forEach((name) => {
+          if (!result[name]) {
+            result[name] = []
+          }
+          result[name].push(item)
+        })
+      })
+
+      return result
     }
   }
 }
