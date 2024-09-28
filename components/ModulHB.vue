@@ -54,6 +54,7 @@ export default {
       modul_hbs_reorganized: {}
     }
   },
+
   mounted () {
     this.fetchSomething()
   },
