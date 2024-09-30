@@ -1,8 +1,6 @@
 <template>
   <section class="section">
-    <div class="columns is-mobile">
-      <ModulHB />
-    </div>
+    <ModulHB/>
   </section>
 </template>
 
