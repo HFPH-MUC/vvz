@@ -97,7 +97,7 @@
               <td>Arbeitsaufwand</td>
               <td>
                 <span v-for="(item, index) in modul.GC_C_n_m_d_workl.split(';')" :key="index">
-                  <b-tag rounded size="is-medium" style="margin: 0 .2rem .2rem 0;">{{ item.trim() }}</b-tag>
+                  <b-tag rounded size="is-medium" style="margin: 0 .2rem .2rem 0;">{{ item.trim() }}</b-tag><br>
                 </span>
               </td>
             </tr>
@@ -129,7 +129,7 @@
           class="card-content"
         >
           <h5 class="subtitle is-5">
-            Lehr- und Lernformen – Dauer des Moduls und Häufigkeit des Angebots
+            Lehr- und Lernformen, Turnus
           </h5>
           <div v-html="modul.n_m_d_elearning" />
         </div>
@@ -139,7 +139,7 @@
           class="card-content"
         >
           <h5 class="subtitle is-5">
-            Voraussetzungen für die Vergabe von ECTS-Punkten
+            Studien- und Prüfungsleistungen
           </h5>
           <div v-html="modul.n_m_d_vorbereitung" />
         </div>
@@ -159,7 +159,7 @@
           class="card-content"
         >
           <h5 class="subtitle is-5">
-            Prüfungsanmeldung
+            Kommentar
           </h5>
           <div v-html="modul.n_m_d_kommentar" />
         </div>
