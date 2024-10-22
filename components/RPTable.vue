@@ -74,6 +74,9 @@
               ENTFÄLLT:
             </span>
             <span v-if="props.row.ed_psid != '9'">
+              <span v-if="props.row.ed_comment == 'UFU' && !props.row.Bezeichnung.startsWith('UFU - ')">
+                UFU&nbsp;-&nbsp;
+              </span>
               {{ props.row.Bezeichnung }}
             </span>
             <span v-else>
@@ -92,7 +95,12 @@
         :searchable="foyer()"
       >
         <span :class="setDateIndicationStyle(props.row.timestamp_end)">
-          {{ props.row.kb_clsl_p_kurz | truncate(19, '…') }}
+          <span v-if="props.row.ed_comment == 'UFU' || props.row.Bezeichnung.startsWith('UFU - ')">
+            {{ props.row.ed_linklabel }}
+          </span>
+          <span v-else>
+            {{ props.row.kb_clsl_p_kurz | truncate(19, '…') }}
+          </span>
         </span>
       </b-table-column>
 
