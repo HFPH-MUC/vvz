@@ -95,8 +95,8 @@
         :searchable="foyer()"
       >
         <span :class="setDateIndicationStyle(props.row.timestamp_end)">
-          <span v-if="props.row.ed_comment == 'UFU' || props.row.Bezeichnung.startsWith('UFU - ')">
-            {{ props.row.ed_linklabel }}
+          <span v-if="props.row.Bezeichnung.startsWith('UFU - ')">
+            {{ props.row.ed_comment }}
           </span>
           <span v-else>
             {{ props.row.kb_clsl_p_kurz | truncate(19, '…') }}
