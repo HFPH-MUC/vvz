@@ -54,7 +54,7 @@ export default {
 <style lang="scss">
   .hero {
     h1, h1 * {
-      color: $hfph-blau-light;
+      color: darken($hfph-blau-light, 10%);
     }
 
     a.nuxt-link-exact-active {
