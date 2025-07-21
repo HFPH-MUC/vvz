@@ -8,8 +8,6 @@
           <b-select
             v-model="selectSemester"
             placeholder="Semester"
-            size="is-medium"
-            class="is-hfph-blau"
             @input="fetchSomething()"
           >
             <option value="2025:1">
@@ -41,7 +39,6 @@
 
         <b-button
           outlined
-          size="is-medium"
           @click="fetchSomething()">
           Neu laden
         </b-button>
@@ -339,7 +336,7 @@ export default {
   }
 
   .select:not(.is-multiple):not(.is-loading)::after {
-    border-color: $hfph-gelb;
+    border-color: $hfph-grau;
   }
 </style>
 

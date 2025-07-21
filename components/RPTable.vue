@@ -3,28 +3,29 @@
     <div class="hero mb-5">
       <NavMini />
 
-      <b-datepicker
-        v-if="displayStyle != 'foyer'"
-        v-model="selected"
-        :show-week-number="true"
-        :locale="'de-DE'"
-        placeholder="Startdatum auswählen"
-        icon="calendar-today"
-        :icon-right="selected ? 'close-circle' : ''"
-        icon-right-clickable
-        trap-focus
-        @icon-right-click="clearDate"
-      />
+      <b-field grouped group-multiline v-if="displayStyle != 'foyer'">
+        <b-datepicker
+          v-if="displayStyle != 'foyer'"
+          v-model="selected"
+          :show-week-number="true"
+          :locale="'de-DE'"
+          placeholder="Startdatum auswählen"
+          icon="calendar-today"
+          :icon-right="selected ? 'close-circle' : ''"
+          icon-right-clickable
+          trap-focus
+          @icon-right-click="clearDate"
+        />
+        <b-button
+          v-if="displayStyle != 'foyer'"
+          class="mb-3"
+          outlined
+          @click="fetchRP()"
+        >
+          Neu laden
+        </b-button>
+      </b-field>
     </div>
-
-    <b-button
-      v-if="displayStyle != 'foyer'"
-      class="mb-3"
-      type="is-hfph-gelb"
-      @click="fetchRP()"
-    >
-      Neu laden
-    </b-button>
 
     <b-loading v-model="isLoading" :is-full-page="isFullPage" :can-cancel="true" />
 
@@ -272,9 +273,13 @@ export default {
     color: $dark;
     font-weight: 500;
     & CODE {
-      color: $dark;
-      background-color: $hfph-grau-light;
+      color: #000;
+      background-color: $hfph-gelb-light;
     }
+  }
+
+  CODE {
+    border-radius: 2px;
   }
 
   .typ_id_3, .typ_id_6 {
