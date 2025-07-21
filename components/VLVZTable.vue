@@ -3,45 +3,50 @@
     <div class="hero mb-5">
       <NavMini />
 
-      <b-field>
-        <b-select
-          v-model="selectSemester"
-          placeholder="Semester"
+      <b-field grouped group-multiline>
+        <b-field>
+          <b-select
+            v-model="selectSemester"
+            placeholder="Semester"
+            size="is-medium"
+            class="is-hfph-blau"
+            @input="fetchSomething()"
+          >
+            <option value="2025:1">
+              Winter 2025/26
+            </option>
+            <option value="2025:2">
+              Sommer 2025
+            </option>
+            <option value="2024:1">
+              Winter 2024/25
+            </option>
+            <option value="2024:2">
+              Sommer 2024
+            </option>
+            <option value="2023:1">
+              Winter 2023/24
+            </option>
+            <option value="2023:2">
+              Sommer 2023
+            </option>
+            <option value="2022:1">
+              Winter 2022/2023
+            </option>
+            <option value="2022:2">
+              Sommer 2022
+            </option>
+          </b-select>
+        </b-field>
+
+        <b-button
+          outlined
           size="is-medium"
-          class="is-hfph-blau"
-          @input="fetchSomething()"
-        >
-          <option value="2025:1">
-            Winter 2025/26
-          </option>
-          <option value="2025:2">
-            Sommer 2025
-          </option>
-          <option value="2024:1">
-            Winter 2024/25
-          </option>
-          <option value="2024:2">
-            Sommer 2024
-          </option>
-          <option value="2023:1">
-            Winter 2023/24
-          </option>
-          <option value="2023:2">
-            Sommer 2023
-          </option>
-          <option value="2022:1">
-            Winter 2022/2023
-          </option>
-          <option value="2022:2">
-            Sommer 2022
-          </option>
-        </b-select>
+          @click="fetchSomething()">
+          Neu laden
+        </b-button>
       </b-field>
     </div>
-
-    <b-button class="mb-3" type="is-hfph-gelb" @click="fetchSomething()">
-      Neu laden
-    </b-button>
 
     <b-loading v-model="isLoading" :is-full-page="isFullPage" :can-cancel="true" />
 
@@ -107,7 +112,6 @@
               <b-tab-item label="Daten" style="background-color: $white;">
                 <div class="content">
                   <ul>
-                    <li><a :href="'https://forum.hfph.de/course/view.php?idnumber=' + props.row.semester_shorthand + '-' + props.row.Angebotsnummer" target="_blank">Zum Kurs bei Moodle</a></li>
                     <li v-if="props.row.kb_clsl_p_lang">
                       <b>Dozent*in: </b>{{ props.row.kb_clsl_p_lang }}
                     </li>
@@ -152,6 +156,14 @@
                       </ul>
                     </li>
                   </ul>
+                  <b-button
+                    tag="a"
+                    :href="'https://forum.hfph.de/course/view.php?idnumber=' + props.row.semester_shorthand + '-' + props.row.Angebotsnummer"
+                    target="_blank"
+                    type="is-hfph-gelb"
+                  >
+                    Zum Kurs bei Moodle
+                  </b-button>
                 </div>
               </b-tab-item>
               <b-tab-item
@@ -338,6 +350,20 @@ export default {
     li {
       padding-left: .5rem;
       margin-left: 1.5rem;
+    }
+  }
+
+  .moodle-link-container {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.02);
+      // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
   }
 
