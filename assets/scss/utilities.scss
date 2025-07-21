@@ -5,19 +5,19 @@
 // If you override or set variables here, they will be available available to you from within your Vue components, without requiring @import statements.
 
 $hfph-grau: #556669;
-$hfph-grau-light: findLightColor($hfph-grau);
-$hfph-grau-dark: findDarkColor($hfph-grau);
+$hfph-grau-light: lighten($hfph-grau, 20%);
+$hfph-grau-dark: darken($hfph-grau, 20%);
 $hfph-grau-invert: findColorInvert($hfph-grau);
 
 
 $hfph-blau: #007f9e;
-$hfph-blau-light: findLightColor($hfph-blau);
-$hfph-blau-dark: findDarkColor($hfph-blau);
+$hfph-blau-light: lighten($hfph-blau, 20%);
+$hfph-blau-dark: darken($hfph-blau, 20%);
 $hfph-blau-invert: findColorInvert($hfph-blau);
 
 $hfph-gelb: #fcea0f;
-$hfph-gelb-light: findLightColor($hfph-gelb);
-$hfph-gelb-dark: findDarkColor($hfph-gelb);
+$hfph-gelb-light: lighten($hfph-gelb, 20%);
+$hfph-gelb-dark: darken($hfph-gelb, 20%);
 $hfph-gelb-invert: findColorInvert($hfph-gelb);
 
 $custom-colors: null !default;
@@ -41,6 +41,12 @@ $colors: mergeColorMaps(
           $light-invert,
       ),
 	    "hfph-blau": (
+	        $hfph-blau,
+            $hfph-blau-invert,
+            $hfph-blau-light,
+            $hfph-blau-dark,
+	    ),
+	    "hfph-grau": (
 	        $hfph-grau,
             $hfph-grau-invert,
             $hfph-grau-light,
