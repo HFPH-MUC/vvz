@@ -273,7 +273,7 @@ export default {
     font-weight: 500;
     & CODE {
       color: $dark;
-      background-color: $hfph-blau-light;
+      background-color: $hfph-grau-light;
     }
   }
 

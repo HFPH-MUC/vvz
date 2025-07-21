@@ -4,7 +4,13 @@
 
 // If you override or set variables here, they will be available available to you from within your Vue components, without requiring @import statements.
 
-$hfph-blau: #556669;
+$hfph-grau: #556669;
+$hfph-grau-light: findLightColor($hfph-grau);
+$hfph-grau-dark: findDarkColor($hfph-grau);
+$hfph-grau-invert: findColorInvert($hfph-grau);
+
+
+$hfph-blau: #007f9e;
 $hfph-blau-light: findLightColor($hfph-blau);
 $hfph-blau-dark: findDarkColor($hfph-blau);
 $hfph-blau-invert: findColorInvert($hfph-blau);
@@ -17,7 +23,7 @@ $hfph-gelb-invert: findColorInvert($hfph-gelb);
 $custom-colors: null !default;
 $custom-shades: null !default;
 
-$primary: $hfph-blau;
+$primary: $hfph-grau;
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: mergeColorMaps(
@@ -35,10 +41,10 @@ $colors: mergeColorMaps(
           $light-invert,
       ),
 	    "hfph-blau": (
-	        $hfph-blau,
-			$hfph-blau-invert,
-	        $hfph-blau-light,
-			$hfph-blau-dark,
+	        $hfph-grau,
+            $hfph-grau-invert,
+            $hfph-grau-light,
+            $hfph-grau-dark,
 	    ),
 	    "hfph-gelb": (
 	        $hfph-gelb,

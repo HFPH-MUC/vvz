@@ -70,7 +70,7 @@ export default {
 
   .navbar.is-hfph-gelb .navbar-brand > .navbar-item,
   .navbar.is-hfph-gelb .navbar-brand .navbar-link {
-    color: $hfph-blau;
+    color: $hfph-grau;
   }
 
   a svg {
