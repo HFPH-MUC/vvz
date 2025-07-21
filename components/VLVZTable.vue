@@ -11,6 +11,9 @@
           class="is-hfph-blau"
           @input="fetchSomething()"
         >
+          <option value="2025:1">
+            Winter 2025/26
+          </option>
           <option value="2025:2">
             Sommer 2025
           </option>
@@ -262,7 +265,7 @@ export default {
       isLoading: false,
       isFullPage: true,
       courses: [],
-      selectSemester: '2025:2'
+      selectSemester: '2025:1'
     }
   },
   mounted () {
