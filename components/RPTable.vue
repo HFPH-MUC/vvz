@@ -75,10 +75,10 @@
               ENTFÄLLT:
             </span>
             <span v-if="props.row.ed_psid != '9'">
-              <span v-if="props.row.ed_comment == 'UFU' && !props.row.Bezeichnung.startsWith('UFU - ')">
-                UFU&nbsp;-&nbsp;
+              <span v-if="props.row.ed_comment == 'UFU' || props.row.Bezeichnung.startsWith('UFU -') || props.row.Bezeichnung.startsWith('UFU:')">
+                <span class="has-text-grey">UFU</span>
               </span>
-              {{ props.row.Bezeichnung }}
+              {{ cleanPrefix(props.row.Bezeichnung) }}
             </span>
             <span v-else>
               Interne Veranstaltung
@@ -225,7 +225,14 @@ export default {
         .finally(() => (
           setTimeout(() => { this.isLoading = false }, 100) // a few ms to prevent blitz
         ))
+    },
+
+    cleanPrefix (text) {
+      return text
+        .replace(/^UFU -\s*/, '')
+        .replace(/^UFU:\s*/, '')
     }
+
   }
 }
 </script>
