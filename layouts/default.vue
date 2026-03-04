@@ -35,19 +35,19 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
           <div class="flex justify-center pt-4 pb-4 space-x-2 is-size-4">
             <a href="https://www.hfph.de/" target="_blank" class="mr-4">
-              <font-awesome-icon icon="arrow-up-right-from-square" />
-            </a>
-            <a href="https://www.facebook.com/hfph.muenchen/" target="_blank" class="mr-4">
-              <font-awesome-icon :icon="['fab', 'facebook']" />
-            </a>
-            <a href="https://twitter.com/hfph_muc" target="_blank" class="mr-4">
-              <font-awesome-icon :icon="['fab', 'twitter']" />
+              <font-awesome-icon icon="square-arrow-up-right" />
             </a>
             <a href="https://www.instagram.com/hfphmuc/" target="_blank" class="mr-4">
-              <font-awesome-icon :icon="['fab', 'instagram']" />
+              <font-awesome-icon :icon="['fab', 'square-instagram']" />
             </a>
             <a href="https://www.linkedin.com/school/15094016" target="_blank" class="mr-4">
               <font-awesome-icon :icon="['fab', 'linkedin']" />
+            </a>
+            <a href="https://forum.hfph.de" target="_blank" class="mr-4">
+              <font-awesome-icon :icon="['fa', 'graduation-cap']" />
+            </a>
+            <a href="https://hfph-community.academyfive.net/" target="_blank" class="mr-4">
+              <font-awesome-icon :icon="['fa', 'id-card']" />
             </a>
           </div>
         </div>
